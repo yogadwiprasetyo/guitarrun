@@ -6,6 +6,7 @@ import ChordValidator from '../components/ChordValidator'
 import { Fretboard } from '../components/Fretboard'
 import { findSong } from '../lib/songs'
 import { findChord } from '../lib/chords'
+import { useExtractedSong } from '../lib/extract'
 import {
   computeFretWindow,
   describeShapeForA11y,
@@ -41,6 +42,7 @@ export default function PlayPage() {
   const mode: DifficultyMode = MODE_OPTIONS.includes(modeParam) ? modeParam : 'original'
   const song = songId ? findSong(songId) : undefined
   const exploreVideoId = !song && ytParam ? ytParam : null
+  const extract = useExtractedSong(exploreVideoId)
 
   const setMode = (next: DifficultyMode) => {
     const params = new URLSearchParams(searchParams)
@@ -118,7 +120,7 @@ export default function PlayPage() {
         </Link>
         <header className="mt-4 pb-8 border-b border-ink-20">
           <div className="text-[11px] uppercase tracking-eyebrow text-accent mb-2">
-            Explore mode · auto-extraction queued
+            Explore mode · {extract.status === 'extracting' ? 'analyzing audio…' : extract.status === 'unsupported' ? 'auto-extraction not yet wired' : extract.status}
           </div>
           <h1 className="font-serif font-semibold leading-[0.98] tracking-[-0.025em] text-[clamp(36px,6vw,56px)]">
             New song · {exploreVideoId}

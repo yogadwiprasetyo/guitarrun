@@ -391,12 +391,30 @@ When growing the library: edit `src/data/songs.json` (see `docs/08-CONTRIBUTING.
 - New chord shapes appended to `chords.json` (one `positions[0]` per name).
 - Local verification: `npm test`, `npx tsc --noEmit`, `npm run dev`.
 
-## Build-order recap (post-v2.5)
+## Build-order recap (post-v3 P2)
 
 ```
 MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2.5 Contrib guide
-            (see docs/05-ROADMAP.md for what's next, gated on data)
+   → v3 P1 URL+difficulty → v3 P2 mic chord validation → v3 P3 backend (designed, stubbed)
+            (see docs/05-ROADMAP.md and docs/09-V3-PHASE-3-EXTRACTION.md)
 ```
+
+# v3 P1 — YouTube URL ingestion + Difficulty mode
+- `lib/youtube.ts` parses /watch, /embed, /shorts, /v, youtu.be, mobile, bare 11-char IDs, h-m-s `t=` timestamps. 17 vitest cases.
+- `<SongUrlInput />` on Home; routes curated → `/play/<id>`, unknown → `/play?yt=<id>`.
+- PlayPage `?mode=` selects beginner/intermediate/advanced/original; Phase 4 will wire actual chord-substitution table.
+
+# v3 P2 — Mic chromagram chord validation
+- `lib/chroma.ts` 60 chord templates (maj/min/7/m7/maj7 × 12 roots), `chromaFromSpectrum` + `matchChord` + `isMatch` (similarity + margin thresholds). 13 vitest cases.
+- `useMicChroma` hook — `getUserMedia` + `AudioContext` + `AnalyserNode.getFloatFrequencyData` + RAF + exponential smoothing; full cleanup on unmount.
+- `<ChordValidator />` opt-in toggle on PlayPage; "Headphones recommended" copy enforces the assumption.
+- Disable echoCancellation/noiseSuppression/AGC so guitar harmonics survive.
+
+# v3 P3 — Auto-extraction backend (designed, stubbed)
+- Architecture in `docs/09-V3-PHASE-3-EXTRACTION.md`.
+- Client `lib/extract.ts` exposes `useExtractedSong(videoId)` returning `ExtractResult` with statuses `curated|pending|extracting|ready|error|unsupported`.
+- Today: returns `curated` for curated library, `unsupported` otherwise.
+- Future: swap `fetchExtractedSong` body to call `/api/extract` (poll until ready). UI doesn't need to change.
 
 ## Default per-feature pattern (still in effect)
 

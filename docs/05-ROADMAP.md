@@ -1,6 +1,17 @@
 # Roadmap — Status
 
-Updated 2026-04-15. Most build-able items shipped; remaining items are gated on retention signal or active R&D.
+Updated 2026-04-15. v3 P1+P2 shipped; v3 P3 designed + stubbed pending backend deploy decisions.
+
+## v3 phase status
+
+| Phase | Feature | Status | Code |
+|---|---|---|---|
+| **v3 P1** | YouTube URL ingestion + Difficulty mode selector | **Shipped** | `lib/youtube.ts`, `<SongUrlInput />`, PlayPage `?yt=`/`?mode=` |
+| **v3 P2** | Live chord validation via mic chromagram (headphones rule) | **Shipped** | `lib/chroma.ts`, `useMicChroma`, `<ChordValidator />` |
+| **v3 P3** | Backend audio-extraction pipeline (yt-dlp + chord/lyrics/BPM models) | **Designed + client stub** | `lib/extract.ts`, `docs/09-V3-PHASE-3-EXTRACTION.md` — needs deploy decision |
+| **v3 P4** | Beginner/Intermediate/Advanced auto chord substitution | **Backlog** | gated by user demand for simplification table |
+
+## Roadmap v2 status
 
 ## Status
 

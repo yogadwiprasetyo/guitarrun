@@ -24,8 +24,9 @@ Updated 2026-04-15.
 ## Routes
 
 ```
-/                  HomePage         filter bar + song grid
-/play/:songId      PlayPage         video + Fretboard hero + ChordStrip + CurrentChord
+/                  HomePage         filter bar + URL input + song grid
+/play/:songId      PlayPage         video + Fretboard hero + ChordStrip + CurrentChord + ChordValidator
+/play              PlayPage         explore mode — accepts ?yt=<videoId>, optional ?mode=, ?t=
 /tuner             TunerPage        mic + needle
 /chords            ChordsPage       search + diagrams
 /trainer           TrainerPage      drill — pool, BPM, duration, score
@@ -37,19 +38,25 @@ Updated 2026-04-15.
 src/
 ├── lib/
 │   ├── chords.ts          ChordPosition, findChord, searchChords
+│   ├── chroma.ts          v3 P2 — chromaFromSpectrum, matchChord, isMatch (60 chord templates)
+│   ├── extract.ts         v3 P3 stub — useExtractedSong, ExtractResult; future /api/extract bridge
 │   ├── fretboard.ts       toFretboardShape, computeFretWindow, renderCoords, describeShapeForA11y
 │   ├── pitch.ts           hzToNote, centsOff, nearestString
 │   ├── songs.ts           Song, ChordHit, filterSongs, allChords
-│   └── timeline.ts        activeChordAt — binary search; returns {index, hit, nextHit, startsAt, endsAt}
+│   ├── timeline.ts        activeChordAt — binary search
+│   └── youtube.ts         v3 P1 — parseYouTubeUrl, parseTimestamp, isYouTubeUrlOrId
 ├── hooks/
+│   ├── useMicChroma.ts        v3 P2 — Web Audio + chromagram + smoothing
 │   ├── useMicPitch.ts
 │   └── useYouTubePlayer.ts
 ├── components/
 │   ├── ChordDiagram.tsx       single-chord SVG (svguitar)
 │   ├── ChordStrip.tsx         timeline ribbon
+│   ├── ChordValidator.tsx     v3 P2 — opt-in mic-listener panel
 │   ├── Fretboard.tsx          v2.1 hero — dual orientation, ghost cross-fade
 │   ├── SongCard.tsx
 │   ├── SongFilterBar.tsx      v2.2 filter UI
+│   ├── SongUrlInput.tsx       v3 P1 — paste YouTube URL on Home
 │   ├── TapTempo.tsx           v2.4 widget
 │   ├── TunerMeter.tsx
 │   └── ErrorBoundary.tsx

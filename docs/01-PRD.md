@@ -34,6 +34,15 @@ Mic + Pitchy McLeod pitch detection; ±5 cents needle, EADGBE auto-target.
 ### F8 — Community Song Submissions *(v2.5)*
 PR-based via `docs/08-CONTRIBUTING.md`. No backend; review is the gate.
 
+### F9 — YouTube URL Ingestion + Difficulty Mode *(v3 P1)*
+Paste any YouTube URL on Home; curated songs jump straight to the synced view. Unknown URLs open in **Explore mode** (player + extraction status). PlayPage exposes a Beginner/Intermediate/Advanced/Original mode selector via `?mode=` URL param (substitution table is v3 P4 backlog).
+
+### F10 — Live Chord Validation *(v3 P2)*
+Opt-in mic listener under the chord strip. Computes a 12-bin chromagram from `AnalyserNode` output, matches against 60 chord templates (maj/min/7/m7/maj7 in 12 roots), shows "heard X (n%)" with an accent bar that fills when the played chord matches the expected one. **Headphones recommended** so the backing track doesn't pollute the mic chroma.
+
+### F11 — Auto-Extraction (in progress) *(v3 P3)*
+Take any YouTube URL → backend pipeline produces chord progression, lyrics, BPM. Architecture in `docs/09-V3-PHASE-3-EXTRACTION.md`; client stub returns curated entries today and is forward-compatible with the backend when it ships.
+
 ## Out of Scope (current)
 
 | Cut | Why |

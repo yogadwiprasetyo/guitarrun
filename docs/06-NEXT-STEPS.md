@@ -1,8 +1,8 @@
-# Next Steps — Post-v2.5
+# Next Steps — Post-v3 P2
 
 Updated 2026-04-15.
 
-The v2.x sprint is **done.** All build-able roadmap items shipped (1, 2, 3-infra, 5a, 6). Remaining items (#4, #5b, #7, #8) are gated on **measurement** or **explicit demand**.
+v2.x done; v3 P1 (URL ingestion + difficulty) and P2 (live chord validation) shipped; v3 P3 architecture documented and stubbed in `lib/extract.ts`. Pending decisions: backend hosting model, API budget, legal sign-off (see `docs/09-V3-PHASE-3-EXTRACTION.md`).
 
 ## Stop, measure, decide
 
@@ -28,6 +28,17 @@ For the next 2 weeks:
 | 60 s play-rate < 12 % | Core loop broken. Re-do the player UX before anything else. |
 
 ## Backlog
+
+### v3 P3 backend (gated on user decisions)
+1. Pick hosting (Modal / Replicate / Render — Vercel functions can't run yt-dlp + Demucs).
+2. Confirm legal pattern for cached audio.
+3. Implement `/api/extract` per `docs/09-V3-PHASE-3-EXTRACTION.md` stages 3.1 → 3.5.
+4. Switch `lib/extract.ts:fetchExtractedSong` from stub to real fetch+poll.
+
+### v3 P4 chord substitution (gated on signal)
+- Build `lib/difficulty.ts` simplifyChord(name, mode) — barre→open variants.
+- Maps F→Fmaj7, Bm→Em7, etc. for Beginner mode.
+- Rewires PlayPage `mode` selector to actually re-render shapes.
 
 ### v2.5.1 polish (low-risk; do during downtime)
 - `?edit=1` clipboard timing helper (lowers contribution friction).
