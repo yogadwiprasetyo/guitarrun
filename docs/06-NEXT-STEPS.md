@@ -31,9 +31,19 @@ For the next 2 weeks:
 
 ### v3.2 — Lyrics display **shipped**
 
-`lib/lyrics.ts` + `<LyricsPanel />` on PlayPage. Chord-name chips above the lyric line they fall on; auto-scroll keeps active line at ~35 % from top; click-to-seek; expand/collapse; empty-state CTA when no lyric data. 12 unit tests; bundle 115.45 KB gz. Schema unchanged — uses `ChordHit.lyric?: string`.
+`lib/lyrics.ts` + `<LyricsPanel />` on PlayPage. Chord-name chips above the lyric line they fall on; auto-scroll keeps active line at ~35 % from top; click-to-seek; expand/collapse; empty-state CTA when no lyric data. Schema unchanged — uses `ChordHit.lyric?: string` + new `Song.lyrics` from v3.2.1.
 
-**Backlog (post-Whisper):** add `ChordHit.lyricToken?: { line: number; charOffset: number }` for token-level chord positioning instead of relative-time interpolation. Activates once v3 P3.4 backend (Whisper API) lands.
+### v3.2.1 — Bulk synced-lyrics ingestion + Home filter **shipped**
+
+- `scripts/lyrics-fetch.mjs`: YouTube timedtext → LRClib fallback with artist+title → title-only last-resort. 101/101 songs now carry `lyrics: Array<{t, text}>` + `lyricsSource: 'lrclib'`. All sourced from LRClib (YouTube CC is rate-limited / often absent on music videos).
+- `Song.lyrics` + `lyricsSource` fields added to TRD Song schema.
+- `linesFromSong(song, timeline)` in `lib/lyrics.ts` prefers persisted `song.lyrics`, falls back to deriving from `ChordHit.lyric` (keeps the 3 hand-curated MVP songs' inline lyrics working).
+- `SongFilterBar` on Home adds Any / With lyrics / No lyrics pills.
+- `LyricsPanel` unchanged — transparently consumes either source.
+
+**Backlog:**
+- **v3.2.2** Lazy-load lyrics per-song. Current bundle 178 KB gz (budget raised from 155→180). Lyrics are ~60 KB gz of the total. Split into `src/data/song-lyrics/<id>.json` files imported dynamically on PlayPage → Home stays slim.
+- **v3.2.3 (post-Whisper)** Token-level chord positioning via `ChordHit.lyricToken?: {line, charOffset}` once v3 P3.4 yields syllable-aligned output.
 
 ### v3.1 follow-ups — **shipped**
 

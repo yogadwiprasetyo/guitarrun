@@ -18,6 +18,17 @@ export type Song = {
   decade?: string
   tags?: string[]
   durationSeconds?: number   // v3.1 — for looped-timeline expansion
+  lyrics?: LyricLine[]       // v3.2.1 — synced lyrics, sorted by t
+  lyricsSource?: 'youtube-cc' | 'lrclib' | 'manual'
+}
+
+export type LyricLine = {
+  t: number       // seconds from video start
+  text: string
+}
+
+export function hasLyrics(song: Song): boolean {
+  return Array.isArray(song.lyrics) && song.lyrics.length > 0
 }
 
 /**
@@ -76,11 +87,17 @@ export function allChords(songs: Song[]): string[] {
 
 export function filterSongs(
   songs: Song[],
-  opts: { difficulty?: Song['difficulty']; decade?: string; chordSubset?: string[] },
+  opts: {
+    difficulty?: Song['difficulty']
+    decade?: string
+    chordSubset?: string[]
+    hasLyrics?: boolean
+  },
 ): Song[] {
   return songs.filter((s) => {
     if (opts.difficulty && s.difficulty !== opts.difficulty) return false
     if (opts.decade && s.decade !== opts.decade) return false
+    if (typeof opts.hasLyrics === 'boolean' && hasLyrics(s) !== opts.hasLyrics) return false
     if (opts.chordSubset && opts.chordSubset.length > 0) {
       const pool = new Set(opts.chordSubset)
       return s.chordsUsed.every((c) => pool.has(c))

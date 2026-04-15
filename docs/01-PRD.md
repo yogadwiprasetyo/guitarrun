@@ -55,8 +55,13 @@ Adds a clipboard helper under the seek buttons: tap "Copy hit @ M:SS" → `{ "t"
 ### F16 — Recently Played *(v2.5.1 polish)*
 Home shows the last 8 songs visited (curated or explore), persisted in `localStorage:gr:recent`. One-click resume; "Clear" button. Hidden when empty.
 
-### F17 — Lyrics Display *(v3.2)*
-`/play/:songId` shows synced lyrics in the Ultimate Guitar style: chord-name chips sit above the words they fall on; active line is bold + accent-tinted; past lines fade to 30 %, future lines to 60 %. Auto-scrolls the active line to ~35 % from top of the panel; respects `prefers-reduced-motion`. Click any line → seek. Empty state when no `lyric` data: prompts the contribution flow. Backed by `lib/lyrics.ts` (`groupTimelineIntoLines`, `findActiveLineIndex`, `chordOverlayPositions`) — pure helpers with 12 unit tests. Schema unchanged; uses existing `ChordHit.lyric?: string`.
+### F17 — Lyrics Display *(v3.2 / v3.2.1)*
+`/play/:songId` shows synced lyrics in the Ultimate Guitar style: chord-name chips sit above the words they fall on; active line is bold + accent-tinted; past lines fade to 30 %, future lines to 60 %. Auto-scrolls the active line to ~35 % from top of the panel; respects `prefers-reduced-motion`. Click any line → seek.
+
+**v3.2.1 data pipeline:** `Song.lyrics: Array<{t, text}>` + `lyricsSource: 'youtube-cc'|'lrclib'|'manual'` persisted in `songs.json` by `scripts/lyrics-fetch.mjs` (YouTube timedtext → LRClib fallback with artist/title matching + title-only last-resort). 101/101 songs have synced lyrics from LRClib.
+
+### F18 — Home "has lyrics" filter *(v3.2.1)*
+`SongFilterBar` adds Any / With lyrics / No lyrics pills; wired through `filterSongs(..., {hasLyrics?: boolean})`. Works alongside difficulty/decade/chord-subset filters.
 
 ### F11 — Auto-Extraction *(v3 P3)*
 Take any YouTube URL → backend pipeline produces chord progression + BPM + chord set; lyrics in stage 3.4. **Backend code complete on Modal** (`backend/modal_app.py`): yt-dlp downloads audio → cached in Modal Volume; librosa extracts BPM via beat tracking; chromagram + 60-template cosine match yields the chord timeline; persisted in Modal Dict.

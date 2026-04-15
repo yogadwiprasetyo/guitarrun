@@ -374,6 +374,7 @@ export default function PlayPage() {
 
       <div className="mt-10 pt-8 border-t border-ink-20">
         <LyricsPanel
+          song={song}
           timeline={effectiveTimeline}
           currentTime={currentTime}
           onSeek={seek}

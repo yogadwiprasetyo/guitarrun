@@ -10,6 +10,7 @@ const INITIAL_FILTER: SongFilterState = {
   difficulty: 'all',
   decade: 'all',
   chordSubset: [],
+  hasLyrics: 'all',
 }
 
 export default function HomePage() {
@@ -21,6 +22,8 @@ export default function HomePage() {
         difficulty: filter.difficulty === 'all' ? undefined : filter.difficulty,
         decade: filter.decade === 'all' ? undefined : filter.decade,
         chordSubset: filter.chordSubset,
+        hasLyrics:
+          filter.hasLyrics === 'all' ? undefined : filter.hasLyrics === 'yes',
       }),
     [filter],
   )

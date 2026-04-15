@@ -6,6 +6,7 @@ export interface SongFilterState {
   difficulty: Song['difficulty'] | 'all'
   decade: string | 'all'
   chordSubset: string[]
+  hasLyrics: 'all' | 'yes' | 'no'
 }
 
 interface SongFilterBarProps {
@@ -31,12 +32,14 @@ export default function SongFilterBar({ songs, value, onChange, matchCount }: So
     onChange({ ...value, chordSubset: next })
   }
 
-  const reset = () => onChange({ difficulty: 'all', decade: 'all', chordSubset: [] })
+  const reset = () =>
+    onChange({ difficulty: 'all', decade: 'all', chordSubset: [], hasLyrics: 'all' })
 
   const hasActive =
     value.difficulty !== 'all' ||
     value.decade !== 'all' ||
-    value.chordSubset.length > 0
+    value.chordSubset.length > 0 ||
+    value.hasLyrics !== 'all'
 
   return (
     <div className="border border-ink-20 bg-surface p-5 sm:p-6">
@@ -109,6 +112,25 @@ export default function SongFilterBar({ songs, value, onChange, matchCount }: So
             </div>
           </>
         )}
+
+        <label className="text-[11px] uppercase tracking-eyebrow text-ink-40">Lyrics</label>
+        <div className="flex flex-wrap gap-2">
+          {(['all', 'yes', 'no'] as const).map((opt) => (
+            <button
+              key={opt}
+              type="button"
+              onClick={() => onChange({ ...value, hasLyrics: opt })}
+              aria-pressed={value.hasLyrics === opt}
+              className={`px-3 py-1.5 rounded-full text-[12px] border transition-colors min-h-[32px] ${
+                value.hasLyrics === opt
+                  ? 'bg-ink text-paper border-ink'
+                  : 'border-ink-20 text-ink-60 hover:border-ink'
+              }`}
+            >
+              {opt === 'all' ? 'Any' : opt === 'yes' ? 'With lyrics' : 'No lyrics'}
+            </button>
+          ))}
+        </div>
 
         <label className="text-[11px] uppercase tracking-eyebrow text-ink-40 self-start pt-1">
           Chord set

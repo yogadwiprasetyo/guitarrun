@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { ChordHit } from '../lib/songs'
+import type { ChordHit, Song } from '../lib/songs'
 import {
   chordOverlayPositions,
   findActiveLineIndex,
-  groupTimelineIntoLines,
+  linesFromSong,
 } from '../lib/lyrics'
 
 interface LyricsPanelProps {
+  song: Song
   timeline: ReadonlyArray<ChordHit>
   currentTime: number
   onSeek: (t: number) => void
@@ -17,12 +18,13 @@ const COLLAPSED_HEIGHT = 280
 const EXPANDED_HEIGHT = 560
 
 export default function LyricsPanel({
+  song,
   timeline,
   currentTime,
   onSeek,
   contributeHref = 'https://github.com/yogadwiprasetyo/guitarrun/blob/main/docs/08-CONTRIBUTING.md',
 }: LyricsPanelProps) {
-  const lines = useMemo(() => groupTimelineIntoLines(timeline), [timeline])
+  const lines = useMemo(() => linesFromSong(song, timeline), [song, timeline])
   const activeIndex = useMemo(
     () => findActiveLineIndex(lines, currentTime),
     [lines, currentTime],

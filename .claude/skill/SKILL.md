@@ -410,6 +410,14 @@ MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2
 - `<ChordValidator />` opt-in toggle on PlayPage; "Headphones recommended" copy enforces the assumption.
 - Disable echoCancellation/noiseSuppression/AGC so guitar harmonics survive.
 
+# v3.2.1 — Bulk synced-lyrics ingestion (shipped)
+
+- `scripts/lyrics-fetch.mjs`: YouTube timedtext → LRClib (artist+title) → LRClib (title-only). No API keys. Re-runnable; only touches songs missing `lyrics`. Writes after each success (resumable).
+- `Song.lyrics: Array<{t: number, text: string}>` + `lyricsSource` persisted in `songs.json`. 101/101 songs populated from LRClib.
+- `linesFromSong(song, timeline)` in `lib/lyrics.ts` prefers `song.lyrics`; falls back to `groupTimelineIntoLines(timeline)` for the 3 MVP songs that encode lyrics on ChordHits.
+- Home filter: Any / With lyrics / No lyrics pills via `filterSongs(..., {hasLyrics?: boolean})`.
+- Bundle 178 KB gz (budget raised from 155 → 180 to absorb inlined lyrics). Lazy-load split documented as v3.2.2 backlog.
+
 # v3.2 — Lyrics display on PlayPage (shipped)
 
 - `lib/lyrics.ts`: pure helpers — `groupTimelineIntoLines(timeline)` → `LyricLine[]` (lyric, hits, startT, endT); `findActiveLineIndex`; `chordOverlayPositions` (per-chord left-offset 0..1 within the line). 12 vitest cases.

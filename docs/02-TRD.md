@@ -100,6 +100,8 @@ type Song = {
   durationSeconds?: number       // v3.1 — total length in integer seconds; drives
                                   // expandLoopingTimeline to fill short contributor
                                   // timelines across the full song
+  lyrics?: Array<{t: number; text: string}>   // v3.2.1 — synced lyrics (seconds, ascending)
+  lyricsSource?: 'youtube-cc' | 'lrclib' | 'manual'
 }
 type ChordHit = { t: number; chord: string; lyric?: string }
 type ChordPosition = { frets: number[]; fingers: number[]; barres?: number[]; baseFret: number }
@@ -120,7 +122,7 @@ type ChordShape = { name: string; notes: string[]; positions: ChordPosition[] }
 
 | Metric | Target | Current |
 |---|---|---|
-| Initial JS (gzipped) | ≤ 155 KB | **100.65 KB** (v2.1 build) |
+| Initial JS (gzipped) | ≤ 180 KB (raised v3.2.1 for inlined lyrics data) | **178 KB** (v3.2.1 build with all 101 synced lyrics) |
 | LCP (4G throttled) | ≤ 2.0 s | tracked via Vercel Lighthouse |
 | TBT | < 200 ms | — |
 | CLS on `/play/:songId` | < 0.1 | — |

@@ -12,6 +12,7 @@ Updated 2026-04-15. v3 P1+P2 shipped; v3 P3 designed + stubbed pending backend d
 | **v3 P3.1** | Modal backend — yt-dlp + librosa BPM + chord template match | **Code complete** | `backend/modal_app.py`, `backend/README.md` — pending `modal deploy` + `VITE_EXTRACT_API_URL` env var |
 | **v3 P4** | Beginner/Intermediate chord substitution table | **Shipped** | `lib/difficulty.ts` — Beginner maps F→C, Bm→Em, Cmaj7→C, etc.; Intermediate swaps full barres for nearby open voicings; PlayPage rewires timeline + chord-set + fret window |
 | **v3.2** | Lyrics display on PlayPage | **Shipped** | `lib/lyrics.ts` + `<LyricsPanel />` — chord-over-syllable layout, auto-scroll, click-to-seek, empty-state with contribution CTA. Uses existing `ChordHit.lyric` field. |
+| **v3.2.1** | Bulk synced-lyrics ingestion + Home "has lyrics" filter | **Shipped** | `scripts/lyrics-fetch.mjs` (YouTube timedtext → LRClib with artist+title → title-only fallback). 101/101 songs have synced lyrics. `Song.lyrics` + `lyricsSource` fields. `SongFilterBar` adds With/No/Any lyrics. |
 
 ## Roadmap v2 status
 
