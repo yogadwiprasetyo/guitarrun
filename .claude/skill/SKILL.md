@@ -410,6 +410,20 @@ MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2
 - `<ChordValidator />` opt-in toggle on PlayPage; "Headphones recommended" copy enforces the assumption.
 - Disable echoCancellation/noiseSuppression/AGC so guitar harmonics survive.
 
+# v3 P4 — Difficulty chord substitution
+
+- `lib/difficulty.ts`: pure substitution table; `simplifyChord/Timeline/ChordSet` + `summarizeSubstitutions`. 13 vitest cases.
+- Beginner table: barres → nearest open (F→C, Bm→Em, Bb→A); 7ths/sus/add → triad (Cmaj7→C, Dsus4→D).
+- Intermediate table: only swap full barres for nearby open voicings (F→Fmaj7, Bm→Bm7).
+- PlayPage uses `effectiveTimeline = simplifyTimeline(song.timeline, mode)` everywhere — fret window, ChordStrip, active-chord lookup, Fretboard hero.
+- Header shows substitution hint: "F → C · Bm → Em · +N more".
+
+# v3 polish (v2.5.1 partial)
+
+- `?edit=1` on PlayPage shows a "Copy hit @ M:SS" button that puts `{ "t": …, "chord": "?" },` on the clipboard for contributors.
+- Trainer Esc stops a running drill; button label updated to "Stop · Esc".
+- ChordValidator silence gate: no chord readout when chroma magnitude < 0.05; reads "silent · play a chord".
+
 # v3 P3 — Auto-extraction backend
 - Architecture: `docs/09-V3-PHASE-3-EXTRACTION.md`. Backend code: `backend/modal_app.py` + `backend/README.md`.
 - Client `lib/extract.ts` exposes `useExtractedSong(videoId)` returning `ExtractResult` (`curated|extracting|ready|error|unsupported`); polls every 5 s for up to 5 min.

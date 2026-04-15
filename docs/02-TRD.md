@@ -54,7 +54,8 @@ src/
 ├── lib/
 │   ├── chords.ts          ChordPosition, findChord, searchChords
 │   ├── chroma.ts          v3 P2 — chromaFromSpectrum, matchChord, isMatch (60 chord templates)
-│   ├── extract.ts         v3 P3 stub — useExtractedSong, ExtractResult; future /api/extract bridge
+│   ├── difficulty.ts      v3 P4 — DifficultyMode, simplifyChord, simplifyTimeline, simplifyChordSet, summarizeSubstitutions
+│   ├── extract.ts         v3 P3 — useExtractedSong, ExtractResult; calls VITE_EXTRACT_API_URL or falls back to curated stub
 │   ├── fretboard.ts       toFretboardShape, computeFretWindow, renderCoords, describeShapeForA11y
 │   ├── pitch.ts           hzToNote, centsOff, nearestString
 │   ├── songs.ts           Song, ChordHit, filterSongs, allChords

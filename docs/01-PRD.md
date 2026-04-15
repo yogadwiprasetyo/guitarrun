@@ -40,6 +40,15 @@ Paste any YouTube URL on Home; curated songs jump straight to the synced view. U
 ### F10 — Live Chord Validation *(v3 P2)*
 Opt-in mic listener under the chord strip. Computes a 12-bin chromagram from `AnalyserNode` output, matches against 60 chord templates (maj/min/7/m7/maj7 in 12 roots), shows "heard X (n%)" with an accent bar that fills when the played chord matches the expected one. **Headphones recommended** so the backing track doesn't pollute the mic chroma.
 
+### F12 — Difficulty Substitution Table *(v3 P4)*
+Mode selector on PlayPage (`?mode=`) now actually rewires the timeline. Beginner collapses every chord to the open-position 8-set (F→C, Bm→Em, Cmaj7→C, Dsus4→D, A7sus4→A, Bb→A, F#m→Em…). Intermediate keeps most chords but swaps full-barre shapes for nearby open voicings (F→Fmaj7, Bm→Bm7). Substitutions render as a hint in the header (`F → C · Bm → Em · +N more`). Fret window + chord strip + Fretboard hero all use the simplified set.
+
+### F13 — Edit Mode `?edit=1` *(v2.5.1 polish)*
+Adds a clipboard helper under the seek buttons: tap "Copy hit @ M:SS" → `{ "t": …, "chord": "?" },` lands in clipboard, ready to paste into a PR for `src/data/songs.json`. Closes the contribution loop (Roadmap #6).
+
+### F14 — Trainer Keyboard Shortcuts *(v2.5.1 polish)*
+`Esc` stops a running drill. Stop button labeled "Stop · Esc".
+
 ### F11 — Auto-Extraction *(v3 P3)*
 Take any YouTube URL → backend pipeline produces chord progression + BPM + chord set; lyrics in stage 3.4. **Backend code complete on Modal** (`backend/modal_app.py`): yt-dlp downloads audio → cached in Modal Volume; librosa extracts BPM via beat tracking; chromagram + 60-template cosine match yields the chord timeline; persisted in Modal Dict.
 

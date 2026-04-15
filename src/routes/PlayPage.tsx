@@ -6,6 +6,11 @@ import ChordValidator from '../components/ChordValidator'
 import { Fretboard } from '../components/Fretboard'
 import { findSong } from '../lib/songs'
 import { findChord } from '../lib/chords'
+import {
+  simplifyChordSet,
+  simplifyTimeline,
+  summarizeSubstitutions,
+} from '../lib/difficulty'
 import { useExtractedSong } from '../lib/extract'
 import {
   computeFretWindow,
@@ -51,6 +56,8 @@ export default function PlayPage() {
     else params.set('mode', next)
     setSearchParams(params, { replace: true })
   }
+
+  const editMode = searchParams.get('edit') === '1'
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   const holderRef = useRef<HTMLDivElement | null>(null)
 
@@ -70,9 +77,22 @@ export default function PlayPage() {
     container,
   )
 
+  const effectiveTimeline = useMemo(
+    () => (song ? simplifyTimeline(song.timeline, mode) : []),
+    [song, mode],
+  )
+  const effectiveChordsUsed = useMemo(
+    () => (song ? simplifyChordSet(song.chordsUsed, mode) : []),
+    [song, mode],
+  )
+  const substitutionSummary = useMemo(
+    () => (song ? summarizeSubstitutions(song.chordsUsed, mode) : { count: 0, pairs: [] }),
+    [song, mode],
+  )
+
   const active = useMemo(
-    () => (song ? activeChordAt(song.timeline, currentTime) : null),
-    [song, currentTime],
+    () => (effectiveTimeline.length > 0 ? activeChordAt(effectiveTimeline, currentTime) : null),
+    [effectiveTimeline, currentTime],
   )
   const activeHit = active?.hit ?? null
   const activeShape = activeHit ? findChord(activeHit.chord) : undefined
@@ -83,12 +103,12 @@ export default function PlayPage() {
   const { fretWindow, shapesByName } = useMemo(() => {
     if (!song) return { fretWindow: { minFret: 0, maxFret: 5 }, shapesByName: new Map<string, FretboardShape>() }
     const map = new Map<string, FretboardShape>()
-    for (const name of song.chordsUsed) {
+    for (const name of effectiveChordsUsed) {
       const c = findChord(name)
       if (c?.positions[0]) map.set(name, toFretboardShape(c.positions[0]))
     }
     return { fretWindow: computeFretWindow([...map.values()]), shapesByName: map }
-  }, [song])
+  }, [song, effectiveChordsUsed])
 
   const currentFretShape = activeHit ? shapesByName.get(activeHit.chord) ?? null : null
   const nextFretShape = nextHit ? shapesByName.get(nextHit.chord) ?? null : null
@@ -202,9 +222,15 @@ export default function PlayPage() {
               {m}
             </button>
           ))}
-          <span className="ml-2 text-[10px] text-ink-40 font-serif italic">
-            (Beginner / Intermediate / Advanced substitution table — Phase 4)
-          </span>
+          {substitutionSummary.count > 0 && (
+            <span className="ml-2 text-[11px] text-ink-40 font-serif italic">
+              {substitutionSummary.pairs
+                .slice(0, 3)
+                .map(([from, to]) => `${from} → ${to}`)
+                .join(' · ')}
+              {substitutionSummary.count > 3 && ` · +${substitutionSummary.count - 3} more`}
+            </span>
+          )}
         </div>
       </header>
 
@@ -268,6 +294,30 @@ export default function PlayPage() {
               {formatTime(currentTime)}
             </span>
           </div>
+
+          {editMode && (
+            <div className="mt-4 border border-dashed border-accent p-3">
+              <div className="text-[10px] uppercase tracking-eyebrow text-accent mb-2">
+                Edit mode · timing helper
+              </div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const snippet = `{ "t": ${currentTime.toFixed(2)}, "chord": "?" },`
+                    navigator.clipboard?.writeText(snippet).catch(() => {})
+                  }}
+                  className="px-3 py-1.5 rounded-full bg-ink text-paper text-[12px] hover:bg-accent transition-colors min-h-[32px]"
+                  aria-label="Copy current timestamp as a ChordHit JSON snippet"
+                >
+                  Copy hit @ {formatTime(currentTime)}
+                </button>
+                <span className="text-[11px] text-ink-40 font-serif italic">
+                  Pastes <code className="text-ink">{`{ "t": …, "chord": "?" },`}</code> into clipboard. Replace "?" with the chord name.
+                </span>
+              </div>
+            </div>
+          )}
         </div>
 
         <aside>
@@ -316,7 +366,7 @@ export default function PlayPage() {
 
       <div className="mt-10 pt-8 border-t border-ink-20">
         <ChordStrip
-          timeline={song.timeline}
+          timeline={effectiveTimeline}
           activeIndex={active?.index ?? null}
           onSeek={seek}
         />

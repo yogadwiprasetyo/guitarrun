@@ -27,7 +27,15 @@ export default function ChordValidator({ expectedChord }: ChordValidatorProps) {
     return matchChord(chroma)
   }, [chroma])
 
-  const matched = candidate && expectedChord ? isMatch(candidate, expectedChord) : false
+  const energy = useMemo(() => {
+    if (!chroma) return 0
+    let sum = 0
+    for (const v of chroma) sum += v * v
+    return Math.sqrt(sum)
+  }, [chroma])
+  const silent = energy < 0.05
+
+  const matched = candidate && expectedChord && !silent ? isMatch(candidate, expectedChord) : false
 
   if (!expectedChord) return null
 
@@ -61,7 +69,9 @@ export default function ChordValidator({ expectedChord }: ChordValidatorProps) {
             ? '—'
             : !chroma
               ? 'warming up'
-              : `heard ${candidate?.name ?? '—'} (${Math.round((candidate?.similarity ?? 0) * 100)}%)`}
+              : silent
+                ? 'silent · play a chord'
+                : `heard ${candidate?.name ?? '—'} (${Math.round((candidate?.similarity ?? 0) * 100)}%)`}
         </span>
       </div>
       {error && (

@@ -42,17 +42,15 @@ For the next 2 weeks:
 - 3.4: Whisper API for synced lyrics.
 - 3.5: "Report a wrong chord" UI feeding a quality flag in the Dict.
 
-### v3 P4 chord substitution (gated on signal)
-- Build `lib/difficulty.ts` simplifyChord(name, mode) — barre→open variants.
-- Maps F→Fmaj7, Bm→Em7, etc. for Beginner mode.
-- Rewires PlayPage `mode` selector to actually re-render shapes.
+### v3 P4 chord substitution — **shipped**
+`lib/difficulty.ts` + PlayPage rewiring landed. Beginner/Intermediate substitutions visible in the header hint. Add user-tunable substitutions later if community asks.
 
-### v2.5.1 polish (low-risk; do during downtime)
-- `?edit=1` clipboard timing helper (lowers contribution friction).
-- Lighthouse CI on every Vercel preview.
-- Playwright visual-regression baselines for `/play/:songId` at 375/768/1280.
-- Fix pre-existing axe-core color-contrast violations on eyebrow text + nav `text-ink-40`.
-- Trainer keyboard shortcuts (space = tap tempo, esc = stop).
+### v2.5.1 polish — partly shipped
+- ✅ `?edit=1` clipboard timing helper (PlayPage edit-mode panel)
+- ✅ Trainer keyboard shortcut (Esc = stop)
+- ⏳ Lighthouse CI on every Vercel preview
+- ⏳ Playwright visual-regression baselines for `/play/:songId` at 375/768/1280
+- ⏳ Fix pre-existing axe-core color-contrast violations on eyebrow text + nav `text-ink-40` (design call)
 
 ### v3 candidates (gated on signal)
 - **#4** Mono chord validation in silent drill (3 d).

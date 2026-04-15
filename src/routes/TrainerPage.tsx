@@ -101,6 +101,19 @@ export default function TrainerPage() {
     }
   }, [status, duration, elapsed])
 
+  useEffect(() => {
+    if (status !== 'running') return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        stop()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status])
+
   const togglePool = (name: string) => {
     setPool((p) => (p.includes(name) ? p.filter((n) => n !== name) : [...p, name]))
   }
@@ -279,8 +292,9 @@ export default function TrainerPage() {
                 type="button"
                 onClick={stop}
                 className="flex-1 px-4 py-2.5 rounded-full border border-ink-20 text-ink text-[13px] hover:border-ink transition-colors min-h-[44px]"
+                aria-label="Stop drill (Esc)"
               >
-                Stop
+                Stop · Esc
               </button>
             </div>
           </aside>
