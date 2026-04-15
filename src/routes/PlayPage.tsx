@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import ChordDiagram from '../components/ChordDiagram'
 import ChordStrip from '../components/ChordStrip'
+import ChordValidator from '../components/ChordValidator'
 import { Fretboard } from '../components/Fretboard'
 import { findSong } from '../lib/songs'
 import { findChord } from '../lib/chords'
@@ -316,6 +317,10 @@ export default function PlayPage() {
           activeIndex={active?.index ?? null}
           onSeek={seek}
         />
+      </div>
+
+      <div className="mt-6">
+        <ChordValidator expectedChord={activeHit?.chord ?? null} />
       </div>
     </div>
   )
