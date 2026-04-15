@@ -1,12 +1,32 @@
 ---
 name: guitarrun-build
-description: Step-by-step reusable skill for building the GuitarRun 1-day MVP — a client-only guitar practice web app with Song Player, Tuner, and Chord Finder.
+description: Reusable skill for building GuitarRun — MVP (shipped) and v2.1 Neck-Visualization Play-Along. Client-only React/Vite/TS guitar practice app with Song Player, Tuner, Chord Finder, and fretboard hero view.
 ---
 
 # GuitarRun Build Skill
 
-> Use alongside existing skills: `frontend-patterns`, `frontend-design`, `e2e-testing`, `typescript-reviewer`, `web-artifacts-builder`.
-> Do **not** write code until `docs/01-PRD.md` and `docs/02-TRD.md` are re-read in the current session.
+> **Canonical docs — re-read at every session start:** `docs/01-PRD.md`, `docs/02-TRD.md`, `docs/05-ROADMAP.md`, `docs/06-NEXT-STEPS.md`, `CLAUDE.md`.
+> Do **not** write code until those are re-read in the current session.
+
+## Global Skills & Subagents — cheat-sheet
+
+Use these to move faster; they know more than raw tools.
+
+| Phase | Global skill(s) | Subagent (parallelize when independent) |
+|---|---|---|
+| Visual direction, design tokens | `frontend-design`, `design-system`, `liquid-glass-design` | — |
+| React architecture, hooks, composition | `frontend-patterns`, `coding-standards` | — |
+| TDD on pure-geometry libs | `tdd-workflow` | `tdd-guide` |
+| Playwright visual regression + axe-core | `e2e-testing`, `accessibility` | `e2e-runner`, `a11y-architect` |
+| Post-write review (required pre-commit) | — | `typescript-reviewer`, `code-reviewer` |
+| Security sweep if touching user input / external IO | `security-review` | `security-reviewer` |
+| Lighthouse / bundle / frame budget | — | `performance-optimizer` |
+| Vite / TS build errors | — | `build-error-resolver` |
+| Dead-code / duplicates at sprint end | — | `refactor-cleaner` |
+| Deep codebase Q&A in parallel | — | `Explore` (very thorough) |
+| Docs / codemaps refresh after ship | — | `doc-updater` |
+
+**Default per-slot pattern:** write failing tests (via `tdd-guide`) → implement → run `typescript-reviewer` + `code-reviewer` **in parallel** → `security-reviewer` if applicable → commit.
 
 ## Build Order (strict — front-to-back)
 
@@ -169,3 +189,162 @@ App (router)
 - [ ] Lighthouse Performance ≥ 85 desktop, ≥ 75 mobile
 - [ ] No console errors on any route
 - [ ] Error boundary catches a thrown test error without whitescreen
+
+---
+
+# v2.1 — Neck-Visualization Play-Along (Roadmap #1)
+
+> Sprint spec: `docs/06-NEXT-STEPS.md` · Feature spec: `docs/01-PRD.md §F4` · Tech delta: `docs/02-TRD.md §v2.1`.
+> 2-day sprint; design already locked (horizontal desktop / vertical mobile, auto-fit frets min 0–5, next-chord ghost cross-fade, rounded barres, subtle motion).
+
+## Build Order (strict)
+
+D1: pure geometry → standalone component → reuse in `/chords` → a11y + visual baselines.
+D2: wire to player → cross-fade → reduced-motion + mobile orientation → Lighthouse → ship.
+
+## Step A — `src/lib/fretboard.ts` (TDD, ~1.5 h)
+
+Invoke `tdd-guide` subagent to scaffold failing tests first. Then implement.
+
+Exports:
+```ts
+interface FretboardShape {
+  frets: ReadonlyArray<number>      // 6 entries, low-E→high-E; -1 muted, 0 open, ≥1 fret
+  fingers: ReadonlyArray<number>    // 6 entries; 0 = open
+  barres: ReadonlyArray<{ fromString: number; toString: number; fret: number }>
+  baseFret: number
+}
+interface FretWindow { minFret: number; maxFret: number }
+
+export function toFretboardShape(position: ChordPosition): FretboardShape
+export function computeFretWindow(shapes: ReadonlyArray<FretboardShape>): FretWindow
+export function renderCoords(
+  shape: FretboardShape,
+  window: FretWindow,
+  orientation: 'horizontal' | 'vertical',
+  size: { width: number; height: number },
+): {
+  dots:    ReadonlyArray<{ x: number; y: number; finger: number; stringIndex: number }>
+  barres:  ReadonlyArray<{ x: number; y: number; width: number; height: number }>
+  markers: ReadonlyArray<{ x: number; y: number; kind: 'muted' | 'open'; stringIndex: number }>
+}
+```
+
+Test matrix (minimum):
+- open G (no barre), open C (muted low E), open D (muted low E + A)
+- barre F at baseFret 1 (full 6-string barre)
+- Bb at baseFret 6 (partial barre)
+- fingers-all-zero fallback
+- `computeFretWindow` clamps `maxFret ≤ 12`, floors `maxFret ≥ 5`
+
+**Done when:** ≥80 % coverage for this module; all functions pure; no DOM imports.
+
+## Step B — `src/components/Fretboard.tsx` (~1.5 h)
+
+Props:
+```ts
+interface FretboardProps {
+  current: FretboardShape | null
+  next: FretboardShape | null
+  nextStartsAt: number | null
+  currentTime: number
+  window: FretWindow
+  orientation: 'horizontal' | 'vertical'
+  ariaLabel: string
+}
+```
+
+Implementation notes:
+- Pure SVG `<svg viewBox>`; container-sized via `ResizeObserver` + RAF debounce.
+- Two `<g>` layers (`current`, `ghost`); animate `opacity` only (no `fill`, no layout props).
+- `prefers-reduced-motion: reduce` → `transition: none`.
+- `role="img"` + `aria-label` built from `describeShapeForA11y`.
+
+Consult `frontend-design` skill for visual treatment (dot glow, nut emphasis, inlay dots at frets 3/5/7/9). Avoid generic-template look per `web/design-quality.md`.
+
+**Done when:** renders any `ChordPosition` standalone; also drops into `/chords` grid unchanged.
+
+## Step C — `src/hooks/useActiveChord.ts` (~45 min)
+
+Wraps existing `lib/timeline.ts` binary search. Returns `{ current, next, nextStartsAt }`. Both `<Fretboard />` and `<ChordStrip />` consume this — prevents drift.
+
+TDD via `tdd-guide`: synthetic timeline with 4 hits; assert seek, pause, end-of-song.
+
+## Step D — Wire into play page + cross-fade (~2 h)
+
+- Compose `<Fretboard />` above a shrunk 48 px `<ChordStrip />` ribbon + `<CurrentChordPanel />`.
+- Cross-fade: ghost fades in at `T − 0.5 s` @ 40 %, swap at `T`, current fades at `T + 0.2 s`.
+- `nextStartsAt == null` → no animation (last chord in song).
+
+## Step E — Mobile orientation + reduced-motion (~45 min)
+
+- Read viewport width **once at mount** (`window.innerWidth ≤ 640`) → pick orientation. Do **not** live-switch.
+- Reduced-motion branch: instant swap, no cross-fade.
+
+## Step F — Quality gates before ship (parallelize)
+
+Run in parallel when independent:
+
+- `typescript-reviewer` + `code-reviewer` on the diff
+- `a11y-architect` or `e2e-runner` for axe-core on `/play/:songId` and `/chords`
+- `performance-optimizer` for Lighthouse vs. TRD budgets (LCP ≤ 2.0 s, TBT < 200 ms, CLS < 0.1, bundle ≤ 155 KB gz)
+- `security-reviewer` — not needed for v2.1 unless new input/IO is added
+- `refactor-cleaner` once features freeze
+
+Playwright visual regression baselines at 375 / 768 / 1280 px (via `e2e-testing` skill + `e2e-runner`).
+
+## v2.1 Validation Checklist
+
+### Fretboard (standalone)
+- [ ] Open G, C, D, Em render correct dots + markers
+- [ ] F barre renders single rounded `<rect>`, not 6 dots
+- [ ] Bb at baseFret 6 stays inside the fret window
+- [ ] Muted strings show `×`; open strings show `○`
+- [ ] Works at 375 / 768 / 1280 without overflow
+
+### Play page integration
+- [ ] Active chord dots update as video plays; no lag >250 ms
+- [ ] Seeking updates fretboard within 500 ms, no stale ghost
+- [ ] Pause leaves fretboard on current chord
+- [ ] `<ChordStrip />` + `<Fretboard />` never drift (same `useActiveChord` source)
+- [ ] Last chord in song: no ghost/fade attempt
+
+### Accessibility
+- [ ] `aria-label` updates per chord change
+- [ ] axe-core: 0 critical violations on `/play/:songId` and `/chords`
+- [ ] `prefers-reduced-motion: reduce` → instant swap, verified in macOS + iOS
+
+### Perf
+- [ ] Bundle ≤ 155 KB gzipped
+- [ ] LCP ≤ 2.0 s on 4G throttled (Lighthouse)
+- [ ] Cross-fade ≤ 4 ms/frame @ 60 fps (Chrome Perf panel)
+- [ ] No CLS regression on `/play/:songId`
+
+### Manual (real guitar + phone)
+- [ ] Dots match fingerboard on 3 chords per song
+- [ ] One full song end-to-end: finger placement is playable
+
+## v2.1 Cut-Scope Tripwires (mirror of NEXT-STEPS)
+
+- Barre tests failing end of D1.H1 → ship dots-only, defer barres.
+- Cross-fade janky D2.H1 → drop ghost, instant swap.
+- Mobile orientation broken D2.H3 → desktop-only + media-query fallback.
+- Lighthouse regression D2.H4 → cut ghost, then inlays.
+
+## v2.1 File Additions / Changes
+
+```
+src/
+├── lib/
+│   ├── fretboard.ts            # NEW — pure geometry
+│   └── chords.ts               # CHANGED — add describeShapeForA11y
+├── components/
+│   ├── Fretboard.tsx           # NEW — hero SVG
+│   └── ChordStrip.tsx          # CHANGED — shrink, consume useActiveChord
+├── hooks/
+│   └── useActiveChord.ts       # NEW — source of truth
+└── routes/
+    └── PlayPage.tsx            # CHANGED — compose Fretboard + ChordStrip + Panel
+```
+
+No changes to `useYouTubePlayer.ts`, `useMicPitch.ts`, `lib/pitch.ts`, `data/*.json`.
