@@ -29,6 +29,23 @@ For the next 2 weeks:
 
 ## Backlog
 
+### v3.1 follow-ups (queued — implement after the 24h YouTube quota window resets and the last 3 placeholders resolve)
+
+Two issues observed on `/play/lovely-billie-eilish` (and likely all 98 imported songs):
+
+**1. Fretboard too small / dots overlap** — `220px` container height with 4–6 frets visible compresses each slot to ~36 px short-axis × ~75 px long-axis. `computeDotRadius` floors at 6 px but the visual ratio still feels cramped, finger-number text overlaps the dot edge, and inlay markers blur into string lines.
+   - Bump `Fretboard` container height on PlayPage from 220 → ~280 px desktop, ~480 px vertical mobile.
+   - In `computeDotRadius`: raise the multiplier from `0.32` to `0.38`; raise the floor from 6 to 9 px.
+   - Increase nut line stroke from 3 to 4; inlay radius `0.15` → `0.2`.
+   - Re-snapshot Wonderwall + Lovely + a barre chord (F) at desktop 1280 and mobile 375 to confirm.
+
+**2. Chord display "stops" mid-song** — the imported contributor timelines only have 4 hits at `t=0/4/8/12` (16 s total) per song. Every 100-song import ends after 16 s while the YouTube video plays on for 3+ min; `activeChordAt` correctly returns the last hit forever, so the user sees the highlight freeze on the final chord.
+   - **Root cause:** data quality, not a sync bug.
+   - **Quick fix (no backend):** `lib/songs.ts` adds `expandLoopingTimeline(song, durationSeconds, bpm)` that detects timelines shorter than the song and loops the chord progression at one-bar intervals (`60/bpm * 4` seconds per cycle) up to `durationSeconds`. Apply at PlayPage render time; tag songs `looped-timeline` so we know they're synthetic.
+   - **Need video duration** — fetch via YouTube Data API `videos.list?id=<id>&part=contentDetails` (1 quota unit per call, vs. 100 for `search.list`); cache the duration into the song record so we only fetch once. Extend `scripts/yt-resolve.mjs` to also fetch + persist `durationSeconds` on each newly-resolved song.
+   - **Long-term fix:** v3 P3.3 Chordino backend produces real per-second chord timelines. Once deployed, `looped-timeline` entries get reprocessed and the synthetic loop is dropped.
+   - **Acceptance:** play any imported song past 16 s and the chord progression keeps cycling on-tempo; chord strip auto-scrolls; Fretboard cross-fades on each loop boundary.
+
 ### v3 P3.1 deploy (one-time, then live)
 1. `pip install modal && modal token new`
 2. `modal deploy backend/modal_app.py` — note the printed endpoint URL.

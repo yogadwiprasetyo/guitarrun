@@ -410,6 +410,13 @@ MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2
 - `<ChordValidator />` opt-in toggle on PlayPage; "Headphones recommended" copy enforces the assumption.
 - Disable echoCancellation/noiseSuppression/AGC so guitar harmonics survive.
 
+# v3.1 follow-ups (queued for next session)
+
+Two issues observed on the imported library — see `docs/06-NEXT-STEPS.md` for the full plan.
+
+1. **Fretboard sizing** — bump container height (220→280 desktop, vertical mobile 420→480), `computeDotRadius` factor 0.32→0.38, floor 6→9, nut stroke 3→4, inlay radius 0.15→0.2.
+2. **Chord display freezes mid-song** — root cause: contributor timelines are 16 s long; songs are 3+ min. Add `expandLoopingTimeline(song, durationSeconds, bpm)` to `lib/songs.ts`; fetch + cache `durationSeconds` per song via YouTube Data API `videos.list` (1 quota unit/call) extending `scripts/yt-resolve.mjs`. Tag synthetic loops `looped-timeline`. Long-term replaced by v3 P3.3 Chordino output.
+
 # v3 P4 — Difficulty chord substitution
 
 - `lib/difficulty.ts`: pure substitution table; `simplifyChord/Timeline/ChordSet` + `summarizeSubstitutions`. 13 vitest cases.
