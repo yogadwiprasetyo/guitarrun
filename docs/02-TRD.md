@@ -57,6 +57,7 @@ src/
 │   ├── difficulty.ts      v3 P4 — DifficultyMode, simplifyChord, simplifyTimeline, simplifyChordSet, summarizeSubstitutions
 │   ├── extract.ts         v3 P3 — useExtractedSong, ExtractResult; calls VITE_EXTRACT_API_URL or falls back to curated stub
 │   ├── fretboard.ts       toFretboardShape, computeFretWindow, renderCoords, describeShapeForA11y
+│   ├── lyrics.ts          v3.2 — groupTimelineIntoLines, findActiveLineIndex, chordOverlayPositions
 │   ├── pitch.ts           hzToNote, centsOff, nearestString
 │   ├── songs.ts           Song, ChordHit, filterSongs, allChords
 │   ├── timeline.ts        activeChordAt — binary search
@@ -69,6 +70,7 @@ src/
 │   ├── ChordDiagram.tsx       single-chord SVG (svguitar)
 │   ├── ChordStrip.tsx         timeline ribbon
 │   ├── ChordValidator.tsx     v3 P2 — opt-in mic-listener panel
+│   ├── LyricsPanel.tsx        v3.2 — chords-over-lyrics, auto-scroll, click-to-seek
 │   ├── Fretboard.tsx          v2.1 hero — dual orientation, ghost cross-fade
 │   ├── SongCard.tsx
 │   ├── SongFilterBar.tsx      v2.2 filter UI

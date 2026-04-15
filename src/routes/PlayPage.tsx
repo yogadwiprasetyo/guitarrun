@@ -3,6 +3,7 @@ import { Link, useParams, useSearchParams } from 'react-router-dom'
 import ChordDiagram from '../components/ChordDiagram'
 import ChordStrip from '../components/ChordStrip'
 import ChordValidator from '../components/ChordValidator'
+import LyricsPanel from '../components/LyricsPanel'
 import { findSong, expandLoopingTimeline } from '../lib/songs'
 import { findChord } from '../lib/chords'
 import {
@@ -372,6 +373,14 @@ export default function PlayPage() {
       </div>
 
       <div className="mt-10 pt-8 border-t border-ink-20">
+        <LyricsPanel
+          timeline={effectiveTimeline}
+          currentTime={currentTime}
+          onSeek={seek}
+        />
+      </div>
+
+      <div className="mt-8">
         <ChordStrip
           timeline={effectiveTimeline}
           activeIndex={active?.index ?? null}

@@ -410,6 +410,14 @@ MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2
 - `<ChordValidator />` opt-in toggle on PlayPage; "Headphones recommended" copy enforces the assumption.
 - Disable echoCancellation/noiseSuppression/AGC so guitar harmonics survive.
 
+# v3.2 — Lyrics display on PlayPage (shipped)
+
+- `lib/lyrics.ts`: pure helpers — `groupTimelineIntoLines(timeline)` → `LyricLine[]` (lyric, hits, startT, endT); `findActiveLineIndex`; `chordOverlayPositions` (per-chord left-offset 0..1 within the line). 12 vitest cases.
+- `<LyricsPanel />`: chord-over-syllable layout matching Ultimate Guitar style. Active line bold + accent; past 30 % opacity; future 60 %. Auto-scrolls active line to ~35 % from top via container `scrollTo({behavior:'smooth'})`; respects `prefers-reduced-motion`.
+- Click any line → `onSeek(line.startT)`. Expand/collapse toggles container height 280→560.
+- Empty state when timeline carries no `lyric` strings: prompts contribution flow (links to `docs/08-CONTRIBUTING.md`).
+- Backlog: per-syllable chord positioning once Whisper backend (v3 P3.4) yields token-level lyric data.
+
 # v3.1 — Fretboard sizing + looping timelines (shipped)
 
 1. **Fretboard sizing** — PlayPage container 220→280 desktop / 420→480 mobile vertical; `computeDotRadius` floor 6→9, factor 0.32→0.38; nut stroke 3→4; inlay radius 0.15→0.2.

@@ -29,6 +29,12 @@ For the next 2 weeks:
 
 ## Backlog
 
+### v3.2 — Lyrics display **shipped**
+
+`lib/lyrics.ts` + `<LyricsPanel />` on PlayPage. Chord-name chips above the lyric line they fall on; auto-scroll keeps active line at ~35 % from top; click-to-seek; expand/collapse; empty-state CTA when no lyric data. 12 unit tests; bundle 115.45 KB gz. Schema unchanged — uses `ChordHit.lyric?: string`.
+
+**Backlog (post-Whisper):** add `ChordHit.lyricToken?: { line: number; charOffset: number }` for token-level chord positioning instead of relative-time interpolation. Activates once v3 P3.4 backend (Whisper API) lands.
+
 ### v3.1 follow-ups — **shipped**
 
 **1. Fretboard sizing** ✅

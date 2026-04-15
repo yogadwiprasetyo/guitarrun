@@ -11,6 +11,7 @@ Updated 2026-04-15. v3 P1+P2 shipped; v3 P3 designed + stubbed pending backend d
 | **v3 P3.0** | Auto-extraction architecture + client stub | **Shipped** | `docs/09-V3-PHASE-3-EXTRACTION.md`, `lib/extract.ts` |
 | **v3 P3.1** | Modal backend — yt-dlp + librosa BPM + chord template match | **Code complete** | `backend/modal_app.py`, `backend/README.md` — pending `modal deploy` + `VITE_EXTRACT_API_URL` env var |
 | **v3 P4** | Beginner/Intermediate chord substitution table | **Shipped** | `lib/difficulty.ts` — Beginner maps F→C, Bm→Em, Cmaj7→C, etc.; Intermediate swaps full barres for nearby open voicings; PlayPage rewires timeline + chord-set + fret window |
+| **v3.2** | Lyrics display on PlayPage | **Shipped** | `lib/lyrics.ts` + `<LyricsPanel />` — chord-over-syllable layout, auto-scroll, click-to-seek, empty-state with contribution CTA. Uses existing `ChordHit.lyric` field. |
 
 ## Roadmap v2 status
 
