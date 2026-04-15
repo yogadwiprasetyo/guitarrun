@@ -6,23 +6,42 @@ interface SongCardProps {
 }
 
 export default function SongCard({ song }: SongCardProps) {
+  const isPlaceholder = (song.tags ?? []).includes('placeholder-yt')
   const thumb = `https://i.ytimg.com/vi/${song.youtubeId}/hqdefault.jpg`
   return (
     <Link
       to={`/play/${song.id}`}
       className="group bg-surface flex flex-col overflow-hidden transition-colors hover:bg-paper"
-      aria-label={`Play ${song.title} by ${song.artist}`}
+      aria-label={`Play ${song.title} by ${song.artist}${isPlaceholder ? ' (preview pending)' : ''}`}
     >
-      <div className="aspect-video bg-ink/10 overflow-hidden relative">
-        <img
-          src={thumb}
-          alt=""
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-          onError={(e) => {
-            ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-          }}
-        />
+      <div className="aspect-video bg-ink/5 overflow-hidden relative">
+        {isPlaceholder ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 text-center">
+            <div className="font-serif text-[10px] uppercase tracking-eyebrow text-ink-40">
+              Preview pending
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+              {song.chordsUsed.slice(0, 4).map((c) => (
+                <span
+                  key={c}
+                  className="font-serif text-[18px] sm:text-[20px] text-ink/70 nums-tabular"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <img
+            src={thumb}
+            alt=""
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            onError={(e) => {
+              ;(e.currentTarget as HTMLImageElement).style.display = 'none'
+            }}
+          />
+        )}
         <div className="absolute inset-0 ring-1 ring-inset ring-ink-20 pointer-events-none" />
       </div>
       <div className="px-5 py-5 flex-1 flex flex-col gap-4">
