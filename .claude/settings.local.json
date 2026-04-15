@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --version)",
+      "Bash(npm --version)",
+      "Bash(pnpm create:*)",
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(ls -la *.config.* *.json)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(git commit -m 'feat: guitarrun MVP with minimal design direction:*)",
+      "Bash(gh repo:*)",
+      "mcp__plugin_everything-claude-code_github__create_repository",
+      "Bash(brew install:*)",
+      "Bash(export PATH=\"/opt/homebrew/bin:$PATH\")",
+      "Bash(gh --version)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

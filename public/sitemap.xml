@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>/tuner</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/chords</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/play/wonderwall-oasis</loc><priority>0.6</priority></url>
+  <url><loc>/play/horse-with-no-name-america</loc><priority>0.6</priority></url>
+  <url><loc>/play/let-it-be-beatles</loc><priority>0.6</priority></url>
+</urlset>
