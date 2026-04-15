@@ -3,21 +3,13 @@ import { Link, useParams, useSearchParams } from 'react-router-dom'
 import ChordDiagram from '../components/ChordDiagram'
 import ChordStrip from '../components/ChordStrip'
 import ChordValidator from '../components/ChordValidator'
-import { Fretboard } from '../components/Fretboard'
 import { findSong, expandLoopingTimeline } from '../lib/songs'
 import { findChord } from '../lib/chords'
 import {
-  simplifyChordSet,
   simplifyTimeline,
   summarizeSubstitutions,
 } from '../lib/difficulty'
 import { useExtractedSong } from '../lib/extract'
-import {
-  computeFretWindow,
-  describeShapeForA11y,
-  toFretboardShape,
-  type FretboardShape,
-} from '../lib/fretboard'
 import { activeChordAt } from '../lib/timeline'
 import { useYouTubePlayer } from '../hooks/useYouTubePlayer'
 
@@ -26,14 +18,6 @@ function formatTime(s: number): string {
   const m = Math.floor(s / 60)
   const r = Math.floor(s % 60)
   return `${m}:${r.toString().padStart(2, '0')}`
-}
-
-function useOrientationOnce(): 'horizontal' | 'vertical' {
-  const [orientation] = useState<'horizontal' | 'vertical'>(() => {
-    if (typeof window === 'undefined') return 'horizontal'
-    return window.innerWidth <= 640 ? 'vertical' : 'horizontal'
-  })
-  return orientation
 }
 
 type DifficultyMode = 'beginner' | 'intermediate' | 'advanced' | 'original'
@@ -100,10 +84,6 @@ export default function PlayPage() {
     const looped = expandLoopingTimeline(song, song.durationSeconds)
     return simplifyTimeline(looped, mode)
   }, [song, mode])
-  const effectiveChordsUsed = useMemo(
-    () => (song ? simplifyChordSet(song.chordsUsed, mode) : []),
-    [song, mode],
-  )
   const substitutionSummary = useMemo(
     () => (song ? summarizeSubstitutions(song.chordsUsed, mode) : { count: 0, pairs: [] }),
     [song, mode],
@@ -117,23 +97,6 @@ export default function PlayPage() {
   const activeShape = activeHit ? findChord(activeHit.chord) : undefined
   const nextHit = active?.nextHit ?? null
   const nextShape = nextHit ? findChord(nextHit.chord) : undefined
-
-  const orientation = useOrientationOnce()
-  const { fretWindow, shapesByName } = useMemo(() => {
-    if (!song) return { fretWindow: { minFret: 0, maxFret: 5 }, shapesByName: new Map<string, FretboardShape>() }
-    const map = new Map<string, FretboardShape>()
-    for (const name of effectiveChordsUsed) {
-      const c = findChord(name)
-      if (c?.positions[0]) map.set(name, toFretboardShape(c.positions[0]))
-    }
-    return { fretWindow: computeFretWindow([...map.values()]), shapesByName: map }
-  }, [song, effectiveChordsUsed])
-
-  const currentFretShape = activeHit ? shapesByName.get(activeHit.chord) ?? null : null
-  const nextFretShape = nextHit ? shapesByName.get(nextHit.chord) ?? null : null
-  const fretAriaLabel = currentFretShape && activeHit
-    ? describeShapeForA11y(currentFretShape, activeHit.chord)
-    : 'Fretboard idle — press play'
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -273,25 +236,6 @@ export default function PlayPage() {
           )}
         </div>
       </header>
-
-      <section
-        className="mt-8 bg-surface border border-ink-20"
-        style={{
-          height: orientation === 'horizontal' ? 280 : 480,
-          padding: 16,
-          color: 'var(--color-ink, #1a1a1a)',
-        }}
-      >
-        <Fretboard
-          current={currentFretShape}
-          next={nextFretShape}
-          currentTime={currentTime}
-          nextStartsAt={nextHit?.t ?? null}
-          window={fretWindow}
-          orientation={orientation}
-          ariaLabel={fretAriaLabel}
-        />
-      </section>
 
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,3fr)] gap-8 lg:gap-12">
         <div>

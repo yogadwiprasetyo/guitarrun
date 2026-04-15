@@ -18,7 +18,7 @@ Updated 2026-04-15. v3 P1+P2 shipped; v3 P3 designed + stubbed pending backend d
 
 | # | Feature | Status | Notes |
 |---|---|---|---|
-| 1 | Neck-Visualization Play-Along | **Shipped v2.1** | Hero fretboard on `/play/:songId`, dual orientation, ghost cross-fade, reduced-motion. |
+| 1 | Neck-Visualization Play-Along | **Removed from PlayPage 2026-04-15** | Was `/play/:songId` hero. Removed at user request after the contributor-import UX review. `<Fretboard />` component + `lib/fretboard.ts` retained — still powers `/trainer`. Re-enable on PlayPage by reverting `<section><Fretboard/></section>` block. |
 | 2 | Chord Trainer drills | **Shipped v2.3** | `/trainer` route — pool selector, BPM, duration, beat progress, score. |
 | 3 | Library expansion + filter | **Infra shipped v2.2** | `SongFilterBar` (difficulty, decade, chord-subset). Library still 3 songs — growth gated on community PRs (#6). |
 | 4 | Monophonic chord validation | **Deferred** | 3-day R&D effort. Out of v2.x scope; no validated demand yet. |

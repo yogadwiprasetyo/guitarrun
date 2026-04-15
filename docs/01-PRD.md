@@ -19,7 +19,7 @@ Mic + Pitchy McLeod pitch detection; ±5 cents needle, EADGBE auto-target.
 ### F3 — Chord Finder *(MVP)*
 ≥80 chord shapes, fuzzy search, SVG diagrams.
 
-### F4 — Neck-Visualization Play-Along *(v2.1)*
+### F4 — Neck-Visualization Play-Along *(v2.1 — removed from PlayPage 2026-04-15; component still in use on /trainer)*
 `/play/:songId` shows a fretboard hero where dot positions light up in time with the song. Horizontal on desktop, vertical on mobile (locked at page-load 640 px breakpoint). Next-chord ghost cross-fade T−0.5s → swap → T+0.2s. `prefers-reduced-motion: reduce` → instant swap. `aria-label` per chord change.
 
 ### F5 — Library Filter *(v2.2)*
