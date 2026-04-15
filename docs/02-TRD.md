@@ -2,6 +2,21 @@
 
 Updated 2026-04-15.
 
+## Backend (v3 P3.1, separate runtime)
+
+| Layer | Choice |
+|---|---|
+| Host | **Modal** (pay-per-second, no 10 s cap, GPU-ready) |
+| Audio | `yt-dlp` + `ffmpeg` (mp3 cached in Modal Volume `guitarrun-audio`) |
+| BPM | `librosa.beat.beat_track` |
+| Chord recognition | `librosa.feature.chroma_cqt` + 60 templates (maj/min/7/m7/maj7 × 12 roots) cosine-match (same template set the client uses for live validation) |
+| Cache (results) | Modal Dict `guitarrun-extracted` keyed by `videoId` → `ExtractedSong` JSON |
+| HTTP | `modal.fastapi_endpoint(method="GET", label="extract")` — `?yt=<videoId>` |
+| Spend cap | $200/mo via Modal Billing → Spend cap |
+| Legal | cached-derivative-only (audio is purgeable analysis cache; only metadata is served) |
+
+Lyrics + advanced chord recognition (Chordino, Whisper) are stages 3.3–3.5 per `docs/09-V3-PHASE-3-EXTRACTION.md`.
+
 ## Tech Stack (unchanged since MVP)
 
 | Layer | Choice |

@@ -410,11 +410,14 @@ MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2
 - `<ChordValidator />` opt-in toggle on PlayPage; "Headphones recommended" copy enforces the assumption.
 - Disable echoCancellation/noiseSuppression/AGC so guitar harmonics survive.
 
-# v3 P3 — Auto-extraction backend (designed, stubbed)
-- Architecture in `docs/09-V3-PHASE-3-EXTRACTION.md`.
-- Client `lib/extract.ts` exposes `useExtractedSong(videoId)` returning `ExtractResult` with statuses `curated|pending|extracting|ready|error|unsupported`.
-- Today: returns `curated` for curated library, `unsupported` otherwise.
-- Future: swap `fetchExtractedSong` body to call `/api/extract` (poll until ready). UI doesn't need to change.
+# v3 P3 — Auto-extraction backend
+- Architecture: `docs/09-V3-PHASE-3-EXTRACTION.md`. Backend code: `backend/modal_app.py` + `backend/README.md`.
+- Client `lib/extract.ts` exposes `useExtractedSong(videoId)` returning `ExtractResult` (`curated|extracting|ready|error|unsupported`); polls every 5 s for up to 5 min.
+- PlayPage uses `effectiveSong = curated ?? (extract.status==='ready' ? extract.song : undefined)` — extracted Songs render the full UI exactly like curated ones.
+- Backend pipeline (Modal): yt-dlp → mp3 (Volume) → librosa BPM + chroma_cqt + 60-template cosine match → ExtractedSong (Dict, keyed by videoId).
+- Set `VITE_EXTRACT_API_URL` to the deployed Modal endpoint URL; if unset the client behaves as if no backend exists (returns `unsupported` for non-curated).
+- Cost ceiling: $200/mo via Modal billing Spend cap.
+- Legal: cached-derivative-only pattern (Volume mp3 is purgeable analysis cache; only metadata is served).
 
 ## Default per-feature pattern (still in effect)
 

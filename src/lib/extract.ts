@@ -30,6 +30,10 @@ export interface ExtractResult {
   error?: string
 }
 
+const API_URL = (import.meta.env.VITE_EXTRACT_API_URL as string | undefined)?.replace(/\/$/, '')
+const POLL_INTERVAL_MS = 5000
+const POLL_MAX_TRIES = 60 // 5 minutes
+
 export async function fetchExtractedSong(videoId: string): Promise<ExtractResult> {
   const curated = songs.find((s) => s.youtubeId === videoId)
   if (curated) {
@@ -44,7 +48,23 @@ export async function fetchExtractedSong(videoId: string): Promise<ExtractResult
       },
     }
   }
-  return { status: 'unsupported' }
+  if (!API_URL) {
+    return { status: 'unsupported' }
+  }
+  try {
+    const res = await fetch(`${API_URL}?yt=${encodeURIComponent(videoId)}`, {
+      method: 'GET',
+      mode: 'cors',
+    })
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      return { status: 'error', error: `extract API ${res.status}: ${text.slice(0, 120)}` }
+    }
+    const json = (await res.json()) as ExtractResult
+    return json
+  } catch (e) {
+    return { status: 'error', error: e instanceof Error ? e.message : 'network error' }
+  }
 }
 
 export function useExtractedSong(videoId: string | null): ExtractResult {
@@ -55,12 +75,28 @@ export function useExtractedSong(videoId: string | null): ExtractResult {
       return
     }
     let cancelled = false
+    let attempts = 0
+    let timer: number | null = null
+
+    const poll = async () => {
+      if (cancelled) return
+      attempts += 1
+      const r = await fetchExtractedSong(videoId)
+      if (cancelled) return
+      setResult(r)
+      const shouldPoll = r.status === 'extracting' && attempts < POLL_MAX_TRIES && API_URL
+      if (shouldPoll) {
+        timer = window.setTimeout(poll, POLL_INTERVAL_MS)
+      } else if (r.status === 'extracting' && attempts >= POLL_MAX_TRIES) {
+        setResult({ status: 'error', error: 'extraction timed out after 5 minutes' })
+      }
+    }
+
     setResult({ status: 'extracting' })
-    fetchExtractedSong(videoId).then((r) => {
-      if (!cancelled) setResult(r)
-    })
+    poll()
     return () => {
       cancelled = true
+      if (timer !== null) clearTimeout(timer)
     }
   }, [videoId])
   return result

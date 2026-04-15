@@ -40,9 +40,10 @@ export default function PlayPage() {
   const ytParam = searchParams.get('yt')
   const modeParam = (searchParams.get('mode') as DifficultyMode | null) ?? 'original'
   const mode: DifficultyMode = MODE_OPTIONS.includes(modeParam) ? modeParam : 'original'
-  const song = songId ? findSong(songId) : undefined
-  const exploreVideoId = !song && ytParam ? ytParam : null
+  const curatedSong = songId ? findSong(songId) : undefined
+  const exploreVideoId = !curatedSong && ytParam ? ytParam : null
   const extract = useExtractedSong(exploreVideoId)
+  const song = curatedSong ?? (extract.status === 'ready' ? extract.song : undefined)
 
   const setMode = (next: DifficultyMode) => {
     const params = new URLSearchParams(searchParams)

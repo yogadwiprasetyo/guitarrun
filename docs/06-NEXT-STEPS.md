@@ -29,11 +29,18 @@ For the next 2 weeks:
 
 ## Backlog
 
-### v3 P3 backend (gated on user decisions)
-1. Pick hosting (Modal / Replicate / Render — Vercel functions can't run yt-dlp + Demucs).
-2. Confirm legal pattern for cached audio.
-3. Implement `/api/extract` per `docs/09-V3-PHASE-3-EXTRACTION.md` stages 3.1 → 3.5.
-4. Switch `lib/extract.ts:fetchExtractedSong` from stub to real fetch+poll.
+### v3 P3.1 deploy (one-time, then live)
+1. `pip install modal && modal token new`
+2. `modal deploy backend/modal_app.py` — note the printed endpoint URL.
+3. Modal workspace → Settings → Billing → set Spend cap to **$200**.
+4. Vercel project → Environment Variables → add `VITE_EXTRACT_API_URL` = the endpoint URL.
+5. Redeploy Vercel; smoke-test by pasting any non-curated YouTube URL on `/`.
+6. Get the one-page legal sign-off on cached-derivative-only pattern (`backend/README.md`).
+
+### v3 P3.3+ (model upgrades, optional)
+- 3.3: Replace librosa template-match with Chordino or crema-py for sharper chord recognition.
+- 3.4: Whisper API for synced lyrics.
+- 3.5: "Report a wrong chord" UI feeding a quality flag in the Dict.
 
 ### v3 P4 chord substitution (gated on signal)
 - Build `lib/difficulty.ts` simplifyChord(name, mode) — barre→open variants.

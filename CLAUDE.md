@@ -12,6 +12,7 @@ Canonical docs (always re-read at session start):
 - `docs/07-DEPLOY.md` — hosting, monitoring, rollback
 - `docs/08-CONTRIBUTING.md` — how to add a song / chord shape (Roadmap #6)
 - `docs/09-V3-PHASE-3-EXTRACTION.md` — auto chord/lyrics/BPM extraction backend architecture
+- `backend/README.md` — Modal deploy guide for the auto-extraction service
 
 ## Goals
 1. **Shipped:** live public URL with MVP + v2.x features.

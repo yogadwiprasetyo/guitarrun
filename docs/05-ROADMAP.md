@@ -8,7 +8,8 @@ Updated 2026-04-15. v3 P1+P2 shipped; v3 P3 designed + stubbed pending backend d
 |---|---|---|---|
 | **v3 P1** | YouTube URL ingestion + Difficulty mode selector | **Shipped** | `lib/youtube.ts`, `<SongUrlInput />`, PlayPage `?yt=`/`?mode=` |
 | **v3 P2** | Live chord validation via mic chromagram (headphones rule) | **Shipped** | `lib/chroma.ts`, `useMicChroma`, `<ChordValidator />` |
-| **v3 P3** | Backend audio-extraction pipeline (yt-dlp + chord/lyrics/BPM models) | **Designed + client stub** | `lib/extract.ts`, `docs/09-V3-PHASE-3-EXTRACTION.md` — needs deploy decision |
+| **v3 P3.0** | Auto-extraction architecture + client stub | **Shipped** | `docs/09-V3-PHASE-3-EXTRACTION.md`, `lib/extract.ts` |
+| **v3 P3.1** | Modal backend — yt-dlp + librosa BPM + chord template match | **Code complete** | `backend/modal_app.py`, `backend/README.md` — pending `modal deploy` + `VITE_EXTRACT_API_URL` env var |
 | **v3 P4** | Beginner/Intermediate/Advanced auto chord substitution | **Backlog** | gated by user demand for simplification table |
 
 ## Roadmap v2 status
