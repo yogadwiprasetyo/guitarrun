@@ -1,88 +1,85 @@
-# Next Steps — 1-Day Execution Plan
+# Next Steps — v2.1 Neck-Visualization Play-Along
 
-Scope: solo dev, 1 working day (~9 hours). Goal: public URL by end of day.
-Treat every slot as a hard budget — if a slot overruns by >30 min, cut scope.
+Scope: 2 working days (~16 h). Goal: ship Roadmap #1 to prod behind a preview URL for review, then merge. If any slot overruns by >45 min, cut scope per tripwires at the bottom.
 
-## Schedule (hour-by-hour)
+## Day 1 — Static fretboard + pure geometry
 
 | Slot | Time | Task | Deliverable |
 |---|---|---|---|
-| **H0** | 09:00–09:30 | Scaffold: Vite + React + TS, Tailwind, Router, deploy empty app to Vercel | Live URL serving "Hello GuitarRun" |
-| **H1** | 09:30–11:00 | Chord Finder (90 min) | `/chords` with search + 80 chords via `svguitar` |
-| **H2** | 11:00–13:00 | Tuner (2 h) | `/tuner` mic capture, pitch meter, green in-tune |
-| *lunch* | 13:00–13:30 | — | — |
-| **H3** | 13:30–14:00 | Seed 3 songs in `songs.json` with hand-timed chord hits | Valid JSON; chord names match `chords.json` |
-| **H4** | 14:00–17:00 | Song Player (3 h): YT hook, timeline binary search, scrolling chord strip | `/play/:songId` works on desktop Chrome |
-| **H5** | 17:00–17:45 | Home + nav + song cards | `/` lists ≥3 songs; header routes work |
-| **H6** | 17:45–18:30 | Mobile pass (375px), error boundary, Plausible + Sentry, `vercel --prod` | Production URL, no console errors |
-| **H7** | 18:30–19:00 | Manual QA with real guitar + phone vs. `SKILL.md` checklist | All boxes ticked or explicitly waived |
+| **D1.H0** | 09:00–09:30 | Branch `feat/neck-viz`; write failing unit tests for `lib/fretboard.ts` (RED) | 3 failing test files |
+| **D1.H1** | 09:30–11:00 | Implement `toFretboardShape`, `computeFretWindow`, `renderCoords` (GREEN) | ≥80 % coverage on `fretboard.ts` |
+| **D1.H2** | 11:00–12:30 | Build `<Fretboard />` SVG — horizontal orientation only | Renders any `ChordPosition` standalone |
+| *lunch* | 12:30–13:00 | — | — |
+| **D1.H3** | 13:00–14:00 | Add vertical orientation + `useElementSize` + `ResizeObserver` | Both orientations correct in a test page |
+| **D1.H4** | 14:00–15:30 | Reuse `<Fretboard />` inside `/chords` finder (parity check) | Chord Finder still passes QA |
+| **D1.H5** | 15:30–16:30 | `describeShapeForA11y` + axe-core smoke; `useActiveChord` hook + unit tests | Both surfaces have valid a11y labels |
+| **D1.H6** | 16:30–17:30 | Visual-regression baselines (Playwright) for Chord Finder + standalone fretboard | Committed snapshots |
 
-## Task Breakdown
+**End of Day 1:** `<Fretboard />` renders any chord anywhere. Not yet wired to the song player.
 
-### H0 — Scaffold *(30 min)*
-- `pnpm create vite@latest` + install deps *(5m)*
-- Tailwind config + base CSS *(10m)*
-- Router + 4 empty route components *(5m)*
-- `git init`, push to GitHub, connect Vercel, confirm auto-deploy *(10m)*
+## Day 2 — Sync to player + polish + ship
 
-### H1 — Chord Finder *(90 min)*
-- Import `@tombatossals/chords-db/lib/guitar.json`, filter to 80 shapes, write `chords.json`, drop the dep *(25m)*
-- `ChordDiagram.tsx` wrapping `svguitar` *(20m)*
-- `ChordSearch.tsx` controlled input + substring match *(15m)*
-- `ChordsPage.tsx` layout (sticky search, responsive grid) *(20m)*
-- QA against `SKILL.md` checklist *(10m)*
+| Slot | Time | Task | Deliverable |
+|---|---|---|---|
+| **D2.H0** | 09:00–10:00 | Wire `<Fretboard />` into play page: consume `useActiveChord`; precompute song `FretWindow` | Active chord updates as video plays |
+| **D2.H1** | 10:00–11:00 | Cross-fade: current opacity, ghost at `T−0.5s` @ 40 %, swap at `T`, current fade at `T+0.2s` | Smooth transition between chords |
+| **D2.H2** | 11:00–11:45 | Shrink `<ChordStrip />` to 48 px ribbon; confirm it still pulls from `useActiveChord` (no drift) | Single source of truth verified |
+| **D2.H3** | 11:45–12:30 | `prefers-reduced-motion` branch; desktop/mobile orientation switch at page-load breakpoint | Reduced-motion users get instant swap |
+| *lunch* | 12:30–13:00 | — | — |
+| **D2.H4** | 13:00–14:00 | Lighthouse check: LCP / TBT / CLS / bundle vs. TRD budgets | All green or documented cut |
+| **D2.H5** | 14:00–15:00 | Playwright visual regression at 375 / 768 / 1280; axe-core on `/play/:songId` | Snapshots + a11y report committed |
+| **D2.H6** | 15:00–16:00 | Manual QA — real guitar, real phone, one full song end-to-end | Finger placement matches dots |
+| **D2.H7** | 16:00–16:45 | Merge to `main`, Vercel prod deploy, smoke test live URL | Live URL + Plausible pageview |
+| **D2.H8** | 16:45–17:00 | Release notes + update `CLAUDE.md` shipped-features line | Docs reflect v2.1 |
 
-### H2 — Tuner *(2 h)*
-- `useMicPitch` hook: getUserMedia + AudioContext + Pitchy *(45m)*
-- `lib/pitch.ts`: `hzToNote`, `centsOff`, `nearestString` *(25m)*
-- `TunerMeter` SVG needle + color states *(30m)*
-- `TunerPage` tap-to-start + readout + cleanup on unmount *(20m)*
+## Task Breakdown (detail)
 
-### H3 — Seed songs *(30 min)*
-- Pick 3 songs, find safe `youtubeId`s (test embed in incognito) *(10m)*
-- Hand-time chord hits by scrubbing video (≤4 changes/bar) *(20m)*
+### D1.H1 — `lib/fretboard.ts`
+- `toFretboardShape`: fold `barres?: number[]` (per-fret int array from chords-db) into typed `{fromString, toString, fret}` segments; validate all 6 slots present.
+- `computeFretWindow`: `minFret = 0`, `maxFret = max(5, max(max(frets) per shape))`, clamp `maxFret ≤ 12`.
+- `renderCoords`: parameterize by orientation; orientation is a top-level branch, not scattered.
+- Tests: open G, barre F (baseFret 1), Bb at baseFret 6, muted-strings edge case, fingers-all-zero fallback.
 
-### H4 — Song Player *(3 h)*
-- `useYouTubePlayer` (load IFrame API, bind events, poll time at 4 Hz) *(60m)*
-- `lib/timeline.ts` binary search for active chord *(20m)*
-- `CurrentChordPanel` (big chord + diagram) *(20m)*
-- `ChordStrip` horizontal list, `transform: translateX` for scroll *(45m)*
-- Wire video state → strip scroll → active chord *(25m)*
-- Seek + pause handling *(10m)*
+### D1.H2 — `<Fretboard />`
+- `<svg viewBox>` sized by container; nut line thicker; inlays at frets 3/5/7/9.
+- Dots: `<circle>` + `<text>` for finger number.
+- Barre: single rounded `<rect>`.
+- Markers: `×` / `○` glyphs left of the nut (horizontal) or above (vertical).
 
-### H5 — Home *(45 min)*
-- `SongCard` component *(15m)*
-- `HomePage` grid *(15m)*
-- Top nav + routing polish *(15m)*
+### D2.H1 — Cross-fade
+- Two `<g>` layers: `current`, `ghost`. Opacity animated via CSS class toggled by `useActiveChord` outputs.
+- Opacity only — no `fill` animation (paint cost).
+- Sanity: no animation when `nextStartsAt == null` (last chord in song).
 
-### H6 — Deploy polish *(45 min)*
-- Mobile at 375px: fix overflow, tap targets *(20m)*
-- Error boundary at root *(5m)*
-- Plausible `<script>` + `Sentry.init({ dsn })` via Vercel env vars *(10m)*
-- `pnpm build`, check bundle, `vercel --prod` *(10m)*
+### D2.H6 — Manual QA checklist
+- Chord dots match fingerboard reality on a real guitar (spot-check 3 chords per song).
+- Seeking jumps the fretboard instantly, no stale ghost.
+- Pausing leaves the fretboard on the current chord.
+- Mobile Safari (375 px) renders vertical orientation without overflow.
+- Reduced-motion (macOS / iOS) kills the cross-fade.
+- No console errors; Sentry receives a manual test error.
 
-### H7 — QA *(30 min)*
-- Run `SKILL.md` checklist on:
-  - Desktop Chrome
-  - Mobile Safari (real device)
-  - Real guitar plugged into the tuner
-- File GitHub issues for anything failing; ship anyway if non-critical; note in release post.
+## Definition of Done — end of Day 2
 
-## Definition of Done — end of day
-
-- [ ] Public Vercel URL loads in <2s on 4G
-- [ ] Home shows ≥3 songs (15 stretch)
-- [ ] At least 1 song plays end-to-end with chord strip synced
-- [ ] Tuner detects an open A string within ±5 cents on a real guitar
-- [ ] Chord Finder returns Cmaj7 in <100 ms; diagram renders
-- [ ] Zero console errors on any route
-- [ ] Plausible recording pageviews
-- [ ] Sentry catches a manually-thrown test error
-- [ ] README.md has live URL + 1-paragraph pitch
+- [ ] `feat/neck-viz` merged to `main`; Vercel prod deploy live
+- [ ] `<Fretboard />` renders active + ghost chord on `/play/:songId`
+- [ ] `<Fretboard />` also powers `/chords` finder (shared component)
+- [ ] Unit tests ≥ 80 % on `lib/fretboard.ts` and `useActiveChord`
+- [ ] Playwright visual snapshots committed for 375 / 768 / 1280
+- [ ] axe-core passes on `/play/:songId` and `/chords`
+- [ ] LCP / TBT / CLS within TRD §Performance Budget
+- [ ] Bundle size ≤ 155 KB gzipped
+- [ ] `prefers-reduced-motion` path verified on macOS
+- [ ] Manual real-guitar check passes on one full song
+- [ ] Plausible event `fretboard_rendered` fires on first chord hit
 
 ## Cut-Scope Tripwires
 
-- Song Player not syncing by 16:30 → ship 1 song instead of 3, move on.
-- Tuner needle flaky by 12:30 → show raw Hz + note name, skip needle polish.
-- Mobile breaks past 18:00 → ship desktop-only with a "desktop for now" banner on mobile, fix next day.
-- Vercel deploy fails past 18:45 → fall back to GitHub Pages.
+- **`renderCoords` not passing barre tests by end of D1.H1** → ship dots-only, defer barres to v2.1.1.
+- **Cross-fade janky on D2.H1** → drop ghost chord entirely; instant swap only.
+- **Mobile orientation broken by D2.H3** → ship desktop-only behind a media query; mobile keeps existing chord strip.
+- **Lighthouse regression by D2.H4** → cut ghost chord first, then shrink fret inlays.
+- **Not merged by D2.H7** → keep preview URL up over the weekend for internal review; ship Monday.
+
+## Out of Scope for v2.1 (reminder)
+3D fretboard, left-handed flip, multi-voicing picker, animated strumming hand, auto mid-song fret window resize. All deferred to v2.2+ per PRD.

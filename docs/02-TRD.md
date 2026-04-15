@@ -1,116 +1,127 @@
-# TRD — GuitarRun MVP
+# TRD — GuitarRun v2.1
 
-## Tech Stack
+## Tech Stack (unchanged from MVP)
 
 | Layer | Choice | Why |
 |---|---|---|
-| Framework | **Vite + React 18 + TypeScript** | Fastest dev loop for solo; no SSR needed (SPA is fine for 3 routes). |
-| Routing | `react-router-dom` v6 | Four routes: `/`, `/play/:songId`, `/tuner`, `/chords`. |
-| Styling | **Tailwind CSS + CSS variables** for design tokens | Ship custom-feeling UI without a component-lib footprint. |
-| State | React state + URL params. No Redux/Zustand. | Three isolated features — no cross-cutting state. |
-| YouTube | **YouTube IFrame Player API** (official, free, ToS-safe) | No audio extraction. Embed + listen to `onStateChange` and poll `getCurrentTime()`. |
-| Pitch detection | **Pitchy** (npm `pitchy`) — McLeod Pitch Method | ~1KB, real-time, accurate for monophonic input. |
-| Chord diagrams | **`svguitar`** (npm) | SVG fretboard rendering; small footprint. |
-| Chord data | Static JSON derived from **`@tombatossals/chords-db`** (MIT) | ≥80 shapes without an external API. |
-| Analytics | Plausible (free tier) or Umami | No cookies, GDPR-safe, lightweight. |
-| Error tracking | Sentry free tier (5K events/mo) | Catch prod JS errors. |
-| Hosting | **Vercel** (free tier) | Git-push deploys, edge CDN, HTTPS out of the box. |
+| Framework | Vite + React 18 + TypeScript | Fastest dev loop for solo; no SSR. |
+| Routing | `react-router-dom` v6 | `/`, `/play/:songId`, `/tuner`, `/chords`. |
+| Styling | Tailwind + CSS variables | Ship custom-feeling UI, no component-lib footprint. |
+| State | React state + URL params | Three isolated surfaces — no cross-cutting state. |
+| YouTube | IFrame Player API | Legal, free, ToS-safe. |
+| Pitch detection | Pitchy (McLeod) | ~1 KB, accurate monophonic. |
+| Chord diagrams | Hand-rolled SVG (`ChordDiagram.tsx`) | Shared geometry with new `Fretboard.tsx`. |
+| Chord data | Static JSON from `@tombatossals/chords-db` | ≥80 shapes, offline. |
+| Analytics | Plausible | No cookies. |
+| Error tracking | Sentry free tier | 5K events/mo. |
+| Hosting | Vercel | Git-push deploys. |
 
-## Architecture (client-only)
+**No new runtime dependencies for v2.1.** Fretboard is pure SVG driven by the existing `ChordPosition` type.
+
+## v2.1 Architecture Delta
 
 ```
-┌───────────────────── Browser ─────────────────────┐
-│  React SPA (Vite build, static on Vercel)        │
-│  ┌─────────┐  ┌─────────┐  ┌──────────┐          │
-│  │  Home   │  │  Play   │  │  Tuner   │          │
-│  │  /      │  │  /play  │  │ /tuner   │          │
-│  └────┬────┘  └────┬────┘  └────┬─────┘          │
-│       │            │            │                │
-│       ▼            ▼            ▼                │
-│  ┌──────────┐ ┌─────────┐  ┌─────────────┐       │
-│  │songs.json│ │ YT API  │  │ getUserMedia│       │
-│  │ (static) │ │ iframe  │  │  + Pitchy   │       │
-│  └──────────┘ └─────────┘  └─────────────┘       │
-│                                                   │
-│  ┌──────────────────────────────────────┐        │
-│  │  Chord Finder  /chords               │        │
-│  │   chords.json + svguitar             │        │
-│  └──────────────────────────────────────┘        │
-│                                                   │
-│  localStorage: tuner mode only                   │
-└───────────────────────────────────────────────────┘
-         │
-         ▼
-   Vercel Edge CDN (static) → Plausible + Sentry
+/play/:songId
+  ├── <Fretboard />         ◀── NEW hero visual
+  │     ├── consumes useActiveChord(timeline, t)
+  │     └── uses lib/fretboard.ts → toFretboardShape(ChordPosition)
+  ├── <ChordStrip />        ◀── kept, demoted to slim timeline ribbon
+  └── <CurrentChordPanel /> ◀── kept, secondary (name + notes)
 ```
 
-Zero backend. Zero auth. Zero DB.
+Single source of truth: `useActiveChord(timeline, currentTime)` wraps the existing `lib/timeline.ts` binary search and returns `{ current, next, nextStartsAt }`. Both `<Fretboard />` and `<ChordStrip />` consume it — no drift possible.
 
-## Data Model
+## New / Changed Modules
 
-### `src/data/songs.json`
+### `src/lib/fretboard.ts` (new, pure, no DOM)
 ```ts
-type Song = {
-  id: string;                 // "wonderwall-oasis"
-  title: string;
-  artist: string;
-  youtubeId: string;          // "bx1Bh8ZvH84"
-  difficulty: "beginner" | "intermediate";
-  chordsUsed: string[];       // ["Em7", "G", "Dsus4", "A7sus4", "Cadd9"]
-  bpm: number;                // manual
-  timeline: ChordHit[];
-};
-type ChordHit = {
-  t: number;                  // seconds from video start, float
-  chord: string;              // must match a key in chords.json
-  lyric?: string;             // optional line displayed with the chord
-};
+interface FretboardShape {
+  frets: ReadonlyArray<number>      // 6 entries low-E→high-E; -1 muted, 0 open, ≥1 fret
+  fingers: ReadonlyArray<number>    // 6 entries; 0 = open
+  barres: ReadonlyArray<{ fromString: number; toString: number; fret: number }>
+  baseFret: number
+}
+
+interface FretWindow { minFret: number; maxFret: number }
+
+export function toFretboardShape(position: ChordPosition): FretboardShape
+export function computeFretWindow(shapes: ReadonlyArray<FretboardShape>): FretWindow
+export function renderCoords(
+  shape: FretboardShape,
+  window: FretWindow,
+  orientation: 'horizontal' | 'vertical',
+  size: { width: number; height: number },
+): {
+  dots:    ReadonlyArray<{ x: number; y: number; finger: number; stringIndex: number }>
+  barres:  ReadonlyArray<{ x: number; y: number; width: number; height: number }>
+  markers: ReadonlyArray<{ x: number; y: number; kind: 'muted' | 'open'; stringIndex: number }>
+}
 ```
 
-### `src/data/chords.json`
+### `src/components/Fretboard.tsx` (new)
 ```ts
-type ChordShape = {
-  name: string;               // "Cmaj7"
-  notes: string[];            // ["C","E","G","B"]
-  positions: Array<{
-    frets: number[];          // 6 items, low E → high E; -1 = muted
-    fingers: number[];        // 0 = open, 1–4 = finger
-    barres?: number[];
-    baseFret: number;         // 1 = open position
-  }>;
-};
+interface FretboardProps {
+  current: FretboardShape | null
+  next: FretboardShape | null
+  nextStartsAt: number | null
+  currentTime: number
+  window: FretWindow
+  orientation: 'horizontal' | 'vertical'
+  ariaLabel: string
+}
 ```
+- Pure SVG (`<svg viewBox>`); container-sized via `ResizeObserver` + RAF debounce.
+- Animates only `opacity` + `transform` on `<g>` layers (compositor-friendly per `web/performance.md`).
+- `prefers-reduced-motion: reduce` → `transition: none`, instant swap.
+- `role="img"` + `aria-label` built from `describeShapeForA11y`.
 
-### Storage
-- **In-memory:** React state for player, pitch detection, search.
-- **localStorage:** `gr:tuner:mode` → `"standard" | "drop-d"`. Single key.
-- **No IndexedDB.** No cookies.
-- **No dates stored anywhere in MVP.**
+### `src/hooks/useActiveChord.ts` (new)
+Thin wrapper over `lib/timeline.ts` that also returns the *next* hit and its start time. Replaces any ad-hoc lookup inside `ChordStrip` / play page.
 
-## Third-Party APIs
+### `src/lib/chords.ts` (extended)
+- Re-export `toFretboardShape`.
+- Add `describeShapeForA11y(shape: FretboardShape, chordName: string): string`.
 
-| API | Use | Risk |
+### Existing files touched
+- `src/components/ChordStrip.tsx` — consume `useActiveChord`; shrink to a ~48 px timeline ribbon.
+- Play page — compose `<Fretboard />` + `<ChordStrip />` + `<CurrentChordPanel />`.
+- No changes to `useYouTubePlayer.ts`, `useMicPitch.ts`, `lib/pitch.ts`, `data/*.json`.
+
+## Data Model (unchanged)
+
+No schema change. `ChordShape.positions[0]` is canonical for v2.1. `ChordHit.t` (seconds, float) and optional `lyric: string` continue to be the only timeline fields. Multi-voicing is v2.2.
+
+## Performance Budget
+
+| Metric | MVP baseline | v2.1 target |
 |---|---|---|
-| YouTube IFrame Player API | Embed + playback state | Some music videos disallow embed — curate the song list around embeddable ones. |
-| `MediaDevices.getUserMedia` | Mic input for tuner | HTTPS required (Vercel default). iOS Safari requires a user gesture. |
-| Web Audio API (`AudioContext`, `AnalyserNode`) | Feed mic → Pitchy | Must `resume()` after user gesture on Safari. |
+| Initial JS (gzipped) | ≤ 150 KB | ≤ 155 KB (+5 KB headroom) |
+| LCP (4G throttled) | ≤ 2.0 s | ≤ 2.0 s |
+| TBT | < 200 ms | < 200 ms |
+| Fretboard cross-fade frame cost | — | ≤ 4 ms/frame @ 60 fps |
+| CLS on `/play/:songId` | < 0.1 | < 0.1 (reserve fretboard height at mount) |
 
-## Browser Compatibility & Performance
+Verification: Lighthouse on preview URL before prod merge. If any budget is breached, cut the ghost-chord animation first.
 
-**Supported:** Chrome ≥100, Safari ≥15, Firefox ≥100, Edge ≥100. Mobile Safari iOS ≥15, Chrome Android ≥100.
-
-**Budgets:**
-- Initial JS ≤ 150 KB gzipped.
-- LCP ≤ 2.0s on 4G throttled.
-- Tuner pitch-detection loop ≤ 20 ms/frame; 30 fps updates.
-
-## Constraints & Risks
+## New Risks
 
 | Risk | Likelihood | Mitigation |
 |---|---|---|
-| YouTube disables embed for a selected song | Medium | Test every `youtubeId` in incognito before shipping; keep replacements ready. |
-| Mobile Safari mic quirks | Medium | Tuner requires a "Tap to start" button; `AudioContext.resume()` inside the click handler. |
-| Chord timeline drift over long videos | Low | Poll `getCurrentTime()` at 4 Hz and binary-search the timeline array; no cumulative error. |
-| Manual song timing is tedious | High | Build a dev-only `?edit=1` overlay that tap-logs timestamps to clipboard. Ship 15 songs only. |
-| Pitchy false positives on background noise | Medium | Require `clarity > 0.9` before displaying a pitch. |
-| `svguitar` bundle surprise | Low | Verify bundle size after first import; fall back to hand-rolled SVG if >30KB. |
+| Long barre renders off fretboard when `baseFret > 1` | Med | `renderCoords` clamps to window; unit tests cover baseFret 5, 7, 9. |
+| `chords-db` shape has bad fingerings (fingers array all zero) | Med | Validate at load time; fall back to "dots only, no finger numbers". |
+| Cross-fade janky on low-end Android | Low | Frame-cost check in Chrome DevTools "Low-end mobile" throttle; cut path above. |
+| SVG reflow on window resize drops frames mid-song | Low | `ResizeObserver` + RAF debounce; snapshot geometry in refs, not state. |
+| Orientation switch at 640 px breakpoint disorients mid-session | Low | Read breakpoint once at page load; do not live-switch on resize. |
+| Fret auto-fit picks too-wide a window | Low | Clamp `maxFret` to 12; shapes beyond that get a position marker + `baseFret` shift. |
+
+## Testing Strategy (per `web/testing.md`)
+
+- **Unit:** `lib/fretboard.ts` — `toFretboardShape`, `computeFretWindow`, `renderCoords` across open, barre (F), high-position (Bb at fret 6). ≥ 80 % coverage for this module.
+- **Unit:** `useActiveChord` with a synthetic timeline; covers seek, pause, end-of-song.
+- **Visual regression:** Playwright screenshots at 375 / 768 / 1280 px on a sample song paused at a known timestamp; snapshot active + ghost state.
+- **A11y:** axe-core on `/play/:songId`; verify `aria-label` updates across a timeline tick; confirm reduced-motion path.
+- **Manual:** real guitar + real phone — play one full song, confirm finger placement matches glowing dots.
+
+## Deployment
+
+Unchanged from MVP (`docs/07-DEPLOY.md`). Single Vercel prod deploy after preview QA. Roll back = redeploy previous commit from Vercel dashboard.
