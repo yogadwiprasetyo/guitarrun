@@ -95,6 +95,9 @@ type Song = {
   tags?: string[]                // v2.2 — convention: 'placeholder-yt' marks
                                   // a structural placeholder youtubeId that needs
                                   // a real verified-embeddable ID before launch
+  durationSeconds?: number       // v3.1 — total length in integer seconds; drives
+                                  // expandLoopingTimeline to fill short contributor
+                                  // timelines across the full song
 }
 type ChordHit = { t: number; chord: string; lyric?: string }
 type ChordPosition = { frets: number[]; fingers: number[]; barres?: number[]; baseFret: number }

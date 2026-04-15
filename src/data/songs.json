@@ -17,7 +17,7 @@
       {
         "t": 0,
         "chord": "Em7",
-        "lyric": "\u2014 intro \u2014"
+        "lyric": "— intro —"
       },
       {
         "t": 4.2,
@@ -104,7 +104,8 @@
     "tags": [
       "britpop",
       "singalong"
-    ]
+    ],
+    "durationSeconds": 278
   },
   {
     "id": "horse-with-no-name-america",
@@ -121,7 +122,7 @@
       {
         "t": 0,
         "chord": "Em",
-        "lyric": "\u2014 intro \u2014"
+        "lyric": "— intro —"
       },
       {
         "t": 4,
@@ -176,7 +177,7 @@
       {
         "t": 48,
         "chord": "Em",
-        "lyric": "\u2014 chorus \u2014"
+        "lyric": "— chorus —"
       },
       {
         "t": 52,
@@ -197,7 +198,8 @@
     "tags": [
       "folk",
       "easy"
-    ]
+    ],
+    "durationSeconds": 292
   },
   {
     "id": "let-it-be-beatles",
@@ -216,7 +218,7 @@
       {
         "t": 0,
         "chord": "C",
-        "lyric": "\u2014 intro \u2014"
+        "lyric": "— intro —"
       },
       {
         "t": 3.3,
@@ -309,7 +311,8 @@
     "tags": [
       "ballad",
       "classic"
-    ]
+    ],
+    "durationSeconds": 244
   },
   {
     "id": "perfect-ed-sheeran",
@@ -345,7 +348,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 282
   },
   {
     "id": "someone-like-you-adele",
@@ -381,7 +385,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 285
   },
   {
     "id": "let-it-be-the-beatles",
@@ -417,7 +422,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 243
   },
   {
     "id": "yellow-coldplay",
@@ -453,7 +459,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 273
   },
   {
     "id": "riptide-vance-joy",
@@ -489,7 +496,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 230
   },
   {
     "id": "i-m-yours-jason-mraz",
@@ -525,7 +533,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 222
   },
   {
     "id": "stand-by-me-ben-e-king",
@@ -561,7 +570,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 178
   },
   {
     "id": "country-roads-john-denver",
@@ -597,7 +607,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 183
   },
   {
     "id": "counting-stars-onerepublic",
@@ -633,7 +644,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 284
   },
   {
     "id": "fix-you-coldplay",
@@ -669,7 +681,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 294
   },
   {
     "id": "photograph-ed-sheeran",
@@ -705,7 +718,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 275
   },
   {
     "id": "hey-there-delilah-plain-white-t-s",
@@ -741,7 +755,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 243
   },
   {
     "id": "shape-of-you-ed-sheeran",
@@ -777,7 +792,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 264
   },
   {
     "id": "chasing-cars-snow-patrol",
@@ -813,7 +829,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 222
   },
   {
     "id": "all-of-me-john-legend",
@@ -849,7 +866,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 270
   },
   {
     "id": "viva-la-vida-coldplay",
@@ -885,7 +903,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 243
   },
   {
     "id": "the-scientist-coldplay",
@@ -921,7 +940,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 310
   },
   {
     "id": "use-somebody-kings-of-leon",
@@ -957,7 +977,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 231
   },
   {
     "id": "demons-imagine-dragons",
@@ -993,7 +1014,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 237
   },
   {
     "id": "take-me-home-country-roads-john-denver",
@@ -1029,7 +1051,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 196
   },
   {
     "id": "thinking-out-loud-ed-sheeran",
@@ -1065,7 +1088,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 290
   },
   {
     "id": "hallelujah-leonard-cohen",
@@ -1101,7 +1125,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 440
   },
   {
     "id": "hotel-california-eagles",
@@ -1137,7 +1162,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 392
   },
   {
     "id": "zombie-the-cranberries",
@@ -1173,7 +1199,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 308
   },
   {
     "id": "no-woman-no-cry-bob-marley",
@@ -1209,7 +1236,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 431
   },
   {
     "id": "imagine-john-lennon",
@@ -1245,7 +1273,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 195
   },
   {
     "id": "hey-jude-the-beatles",
@@ -1281,7 +1310,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 490
   },
   {
     "id": "yesterday-the-beatles",
@@ -1317,7 +1347,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 153
   },
   {
     "id": "blackbird-the-beatles",
@@ -1353,7 +1384,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 139
   },
   {
     "id": "best-part-daniel-caesar",
@@ -1389,7 +1421,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 210
   },
   {
     "id": "stay-with-me-sam-smith",
@@ -1425,7 +1458,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 210
   },
   {
     "id": "love-yourself-justin-bieber",
@@ -1461,7 +1495,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 281
   },
   {
     "id": "just-the-way-you-are-bruno-mars",
@@ -1497,7 +1532,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 237
   },
   {
     "id": "grenade-bruno-mars",
@@ -1533,7 +1569,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 221
   },
   {
     "id": "shallow-lady-gaga",
@@ -1569,7 +1606,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 217
   },
   {
     "id": "say-you-won-t-let-go-james-arthur",
@@ -1605,7 +1643,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 211
   },
   {
     "id": "before-you-go-lewis-capaldi",
@@ -1641,7 +1680,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 247
   },
   {
     "id": "let-her-go-passenger",
@@ -1677,7 +1717,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 255
   },
   {
     "id": "budapest-george-ezra",
@@ -1713,7 +1754,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 217
   },
   {
     "id": "ho-hey-the-lumineers",
@@ -1749,7 +1791,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 162
   },
   {
     "id": "little-talks-of-monsters-and-men",
@@ -1785,7 +1828,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 255
   },
   {
     "id": "sweater-weather-the-neighbourhood",
@@ -1821,7 +1865,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 253
   },
   {
     "id": "pompeii-bastille",
@@ -1857,7 +1902,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 233
   },
   {
     "id": "radioactive-imagine-dragons",
@@ -1893,7 +1939,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 262
   },
   {
     "id": "believer-imagine-dragons",
@@ -1929,7 +1976,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 217
   },
   {
     "id": "thunder-imagine-dragons",
@@ -1965,7 +2013,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 205
   },
   {
     "id": "apologize-onerepublic",
@@ -2001,7 +2050,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 189
   },
   {
     "id": "secrets-onerepublic",
@@ -2037,7 +2087,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 233
   },
   {
     "id": "if-i-ain-t-got-you-alicia-keys",
@@ -2073,7 +2124,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 210
   },
   {
     "id": "rolling-in-the-deep-adele",
@@ -2109,7 +2161,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 234
   },
   {
     "id": "set-fire-to-the-rain-adele",
@@ -2145,7 +2198,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 243
   },
   {
     "id": "when-we-were-young-adele",
@@ -2181,7 +2235,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 291
   },
   {
     "id": "skyfall-adele",
@@ -2217,7 +2272,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 290
   },
   {
     "id": "watermelon-sugar-harry-styles",
@@ -2253,7 +2309,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 189
   },
   {
     "id": "as-it-was-harry-styles",
@@ -2289,7 +2346,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 166
   },
   {
     "id": "sign-of-the-times-harry-styles",
@@ -2325,7 +2383,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 342
   },
   {
     "id": "golden-harry-styles",
@@ -2361,7 +2420,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 210
   },
   {
     "id": "adore-you-harry-styles",
@@ -2397,7 +2457,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 219
   },
   {
     "id": "drivers-license-olivia-rodrigo",
@@ -2433,7 +2494,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 248
   },
   {
     "id": "good-4-u-olivia-rodrigo",
@@ -2469,7 +2531,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 199
   },
   {
     "id": "deja-vu-olivia-rodrigo",
@@ -2505,7 +2568,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 232
   },
   {
     "id": "peaches-justin-bieber",
@@ -2541,7 +2605,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 198
   },
   {
     "id": "stay-the-kid-laroi",
@@ -2577,7 +2642,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 158
   },
   {
     "id": "levitating-dua-lipa",
@@ -2613,7 +2679,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 231
   },
   {
     "id": "blinding-lights-the-weeknd",
@@ -2649,7 +2716,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 263
   },
   {
     "id": "save-your-tears-the-weeknd",
@@ -2685,7 +2753,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 180
   },
   {
     "id": "circles-post-malone",
@@ -2721,7 +2790,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 227
   },
   {
     "id": "sunflower-post-malone",
@@ -2757,7 +2827,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 162
   },
   {
     "id": "memories-maroon-5",
@@ -2793,7 +2864,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 196
   },
   {
     "id": "girls-like-you-maroon-5",
@@ -2829,7 +2901,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 271
   },
   {
     "id": "sugar-maroon-5",
@@ -2865,7 +2938,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 302
   },
   {
     "id": "she-will-be-loved-maroon-5",
@@ -2901,7 +2975,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 269
   },
   {
     "id": "payphone-maroon-5",
@@ -2937,7 +3012,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 280
   },
   {
     "id": "moves-like-jagger-counting-crows",
@@ -2973,7 +3049,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 108
   },
   {
     "id": "counting-blue-cars-goo-goo-dolls",
@@ -3009,7 +3086,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 270
   },
   {
     "id": "iris-calvin-harris",
@@ -3045,7 +3123,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 11
   },
   {
     "id": "slide-pearl-jam",
@@ -3081,7 +3160,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 326
   },
   {
     "id": "yellow-ledbetter-radiohead",
@@ -3117,7 +3197,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 306
   },
   {
     "id": "creep-radiohead",
@@ -3153,7 +3234,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 237
   },
   {
     "id": "high-and-dry-radiohead",
@@ -3189,7 +3271,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 260
   },
   {
     "id": "fake-plastic-trees-radiohead",
@@ -3225,7 +3308,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 293
   },
   {
     "id": "clocks-coldplay",
@@ -3261,7 +3345,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 256
   },
   {
     "id": "paradise-coldplay",
@@ -3297,7 +3382,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 261
   },
   {
     "id": "adventure-of-a-lifetime-coldplay",
@@ -3333,7 +3419,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 316
   },
   {
     "id": "hymn-for-the-weekend-coldplay",
@@ -3369,7 +3456,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 261
   },
   {
     "id": "everglow-coldplay",
@@ -3405,7 +3493,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 306
   },
   {
     "id": "magic-coldplay",
@@ -3441,7 +3530,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 316
   },
   {
     "id": "a-sky-full-of-stars-coldplay",
@@ -3477,7 +3567,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 254
   },
   {
     "id": "ocean-eyes-billie-eilish",
@@ -3513,7 +3604,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 201
   },
   {
     "id": "lovely-billie-eilish",
@@ -3549,7 +3641,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 200
   },
   {
     "id": "happier-than-ever-billie-eilish",
@@ -3585,7 +3678,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 316
   },
   {
     "id": "bad-guy-billie-eilish",
@@ -3621,7 +3715,8 @@
         "t": 12,
         "chord": "G"
       }
-    ]
+    ],
+    "durationSeconds": 206
   },
   {
     "id": "everything-i-wanted-billie-eilish",
@@ -3657,7 +3752,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 288
   },
   {
     "id": "lovely-day-bill-withers",
@@ -3693,7 +3789,8 @@
         "t": 12,
         "chord": "D"
       }
-    ]
+    ],
+    "durationSeconds": 256
   },
   {
     "id": "lean-on-me-bill-withers",
@@ -3729,7 +3826,8 @@
         "t": 12,
         "chord": "F"
       }
-    ]
+    ],
+    "durationSeconds": 258
   },
   {
     "id": "ain-t-no-sunshine-bill-withers",

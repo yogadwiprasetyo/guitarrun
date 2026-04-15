@@ -4,7 +4,7 @@ import ChordDiagram from '../components/ChordDiagram'
 import ChordStrip from '../components/ChordStrip'
 import ChordValidator from '../components/ChordValidator'
 import { Fretboard } from '../components/Fretboard'
-import { findSong } from '../lib/songs'
+import { findSong, expandLoopingTimeline } from '../lib/songs'
 import { findChord } from '../lib/chords'
 import {
   simplifyChordSet,
@@ -95,10 +95,11 @@ export default function PlayPage() {
     container,
   )
 
-  const effectiveTimeline = useMemo(
-    () => (song ? simplifyTimeline(song.timeline, mode) : []),
-    [song, mode],
-  )
+  const effectiveTimeline = useMemo(() => {
+    if (!song) return []
+    const looped = expandLoopingTimeline(song, song.durationSeconds)
+    return simplifyTimeline(looped, mode)
+  }, [song, mode])
   const effectiveChordsUsed = useMemo(
     () => (song ? simplifyChordSet(song.chordsUsed, mode) : []),
     [song, mode],
@@ -276,7 +277,7 @@ export default function PlayPage() {
       <section
         className="mt-8 bg-surface border border-ink-20"
         style={{
-          height: orientation === 'horizontal' ? 220 : 420,
+          height: orientation === 'horizontal' ? 280 : 480,
           padding: 16,
           color: 'var(--color-ink, #1a1a1a)',
         }}

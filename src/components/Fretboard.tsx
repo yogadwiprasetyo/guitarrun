@@ -178,7 +178,7 @@ function FretboardGrid({
         y2={a.y2}
         stroke="currentColor"
         strokeOpacity={isNut ? 1 : 0.35}
-        strokeWidth={isNut ? 3 : 1}
+        strokeWidth={isNut ? 4 : 1}
       />,
     )
   }
@@ -189,7 +189,7 @@ function FretboardGrid({
   for (const f of inlayFrets) {
     const longPos = fretStart + (f - fretWindow.minFret - 0.5) * fretStep
     const shortPos = shortAxis / 2
-    const r = Math.min(fretStep, stringStep) * 0.15
+    const r = Math.min(fretStep, stringStep) * 0.2
     const cx = isHorizontal ? longPos : shortPos
     const cy = isHorizontal ? shortPos : longPos
     elements.push(
@@ -301,5 +301,5 @@ function computeDotRadius(
   const padding = 0.06
   const fretStep = (longAxis * (1 - padding)) / (fretWindow.maxFret - fretWindow.minFret)
   const stringStep = shortAxis / 5
-  return Math.max(6, Math.min(fretStep, stringStep) * 0.32)
+  return Math.max(9, Math.min(fretStep, stringStep) * 0.38)
 }

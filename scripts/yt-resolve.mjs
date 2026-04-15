@@ -57,6 +57,38 @@ let resolved = 0
 let failed = 0
 const failures = []
 
+function parseISODurationToSeconds(iso) {
+  const m = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(iso || '')
+  if (!m) return null
+  const h = Number(m[1] ?? 0)
+  const min = Number(m[2] ?? 0)
+  const s = Number(m[3] ?? 0)
+  return h * 3600 + min * 60 + s
+}
+
+async function fetchDurations(videoIds) {
+  if (videoIds.length === 0) return new Map()
+  const out = new Map()
+  for (let i = 0; i < videoIds.length; i += 50) {
+    const batch = videoIds.slice(i, i + 50)
+    const url = new URL('https://www.googleapis.com/youtube/v3/videos')
+    url.searchParams.set('part', 'contentDetails')
+    url.searchParams.set('id', batch.join(','))
+    url.searchParams.set('key', API_KEY)
+    const res = await fetch(url)
+    if (!res.ok) {
+      const body = await res.text().catch(() => '')
+      throw new Error(`videos.list HTTP ${res.status}: ${body.slice(0, 200)}`)
+    }
+    const json = await res.json()
+    for (const item of json.items ?? []) {
+      const sec = parseISODurationToSeconds(item.contentDetails?.duration)
+      if (sec !== null) out.set(item.id, sec)
+    }
+  }
+  return out
+}
+
 async function searchYouTube(query) {
   const url = new URL('https://www.googleapis.com/youtube/v3/search')
   url.searchParams.set('part', 'snippet')
@@ -133,4 +165,27 @@ if (failures.length > 0) {
   console.log('\nFailure detail:')
   for (const f of failures.slice(0, 20)) console.log(`  ${f.id}  [${f.reason}]  q="${f.query}"`)
   if (failures.length > 20) console.log(`  ... and ${failures.length - 20} more`)
+}
+
+// === Duration backfill (videos.list, 1 unit per call, up to 50 ids batched) ===
+const needsDuration = songs.filter(
+  (s) => typeof s.durationSeconds !== 'number' && /^[\w-]{11}$/.test(s.youtubeId) && !(s.tags ?? []).includes('placeholder-yt'),
+)
+if (!DRY && needsDuration.length > 0) {
+  console.log(`\nDuration backfill: ${needsDuration.length} song(s)`)
+  try {
+    const durations = await fetchDurations(needsDuration.map((s) => s.youtubeId))
+    let added = 0
+    for (const s of needsDuration) {
+      const sec = durations.get(s.youtubeId)
+      if (typeof sec === 'number' && sec > 0) {
+        s.durationSeconds = sec
+        added++
+      }
+    }
+    writeFileSync(SONGS_PATH, JSON.stringify(songs, null, 2))
+    console.log(`  ${added}/${needsDuration.length} durations persisted`)
+  } catch (e) {
+    console.log(`  ERROR: ${e instanceof Error ? e.message : String(e)}`)
+  }
 }
