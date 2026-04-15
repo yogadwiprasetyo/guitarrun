@@ -1,8 +1,28 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SongCard from '../components/SongCard'
-import { songs } from '../lib/songs'
+import SongFilterBar, { type SongFilterState } from '../components/SongFilterBar'
+import { filterSongs, songs } from '../lib/songs'
+
+const INITIAL_FILTER: SongFilterState = {
+  difficulty: 'all',
+  decade: 'all',
+  chordSubset: [],
+}
 
 export default function HomePage() {
+  const [filter, setFilter] = useState<SongFilterState>(INITIAL_FILTER)
+
+  const results = useMemo(
+    () =>
+      filterSongs(songs, {
+        difficulty: filter.difficulty === 'all' ? undefined : filter.difficulty,
+        decade: filter.decade === 'all' ? undefined : filter.decade,
+        chordSubset: filter.chordSubset,
+      }),
+    [filter],
+  )
+
   return (
     <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-16 pb-20">
       <section className="pb-12 sm:pb-16 border-b border-ink-20">
@@ -31,11 +51,17 @@ export default function HomePage() {
           >
             Chord library
           </Link>
+          <Link
+            to="/trainer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ink-20 text-ink text-[14px] font-medium hover:border-ink transition-colors"
+          >
+            Chord trainer
+          </Link>
         </div>
       </section>
 
       <section className="pt-10 sm:pt-14">
-        <div className="flex items-baseline justify-between mb-8 gap-4">
+        <div className="flex items-baseline justify-between mb-6 gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-eyebrow text-ink-40 mb-1">
               Curated library
@@ -48,11 +74,27 @@ export default function HomePage() {
             {songs.length} song{songs.length === 1 ? '' : 's'}
           </span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-20 border border-ink-20">
-          {songs.map((song) => (
-            <SongCard key={song.id} song={song} />
-          ))}
+
+        <div className="mb-6">
+          <SongFilterBar
+            songs={songs}
+            value={filter}
+            onChange={setFilter}
+            matchCount={results.length}
+          />
         </div>
+
+        {results.length === 0 ? (
+          <div className="border border-dashed border-ink-20 py-16 text-center font-serif italic text-ink-60">
+            No songs match these filters. Try clearing them.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-20 border border-ink-20">
+            {results.map((song) => (
+              <SongCard key={song.id} song={song} />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   )
