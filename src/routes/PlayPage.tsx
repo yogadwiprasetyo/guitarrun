@@ -58,6 +58,24 @@ export default function PlayPage() {
   }
 
   const editMode = searchParams.get('edit') === '1'
+  const editBufferKey = `gr:edit:buffer:${songId ?? ytParam ?? 'unknown'}`
+  const [editBuffer, setEditBuffer] = useState<string[]>(() => {
+    if (typeof window === 'undefined') return []
+    try {
+      const raw = window.localStorage.getItem(editBufferKey)
+      return raw ? (JSON.parse(raw) as string[]) : []
+    } catch {
+      return []
+    }
+  })
+  const persistEditBuffer = (next: string[]) => {
+    setEditBuffer(next)
+    try {
+      window.localStorage.setItem(editBufferKey, JSON.stringify(next))
+    } catch {
+      // ignore quota errors
+    }
+  }
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   const holderRef = useRef<HTMLDivElement | null>(null)
 
@@ -115,6 +133,27 @@ export default function PlayPage() {
   const fretAriaLabel = currentFretShape && activeHit
     ? describeShapeForA11y(currentFretShape, activeHit.chord)
     : 'Fretboard idle — press play'
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (!song && !exploreVideoId) return
+    const entry = {
+      id: song?.id ?? `yt-${exploreVideoId}`,
+      title: song?.title ?? exploreVideoId ?? '',
+      artist: song?.artist ?? '',
+      youtubeId: song?.youtubeId ?? exploreVideoId ?? '',
+      kind: song ? ('curated' as const) : ('explore' as const),
+      visitedAt: Date.now(),
+    }
+    try {
+      const raw = window.localStorage.getItem('gr:recent')
+      const list: typeof entry[] = raw ? JSON.parse(raw) : []
+      const next = [entry, ...list.filter((e) => e.id !== entry.id)].slice(0, 8)
+      window.localStorage.setItem('gr:recent', JSON.stringify(next))
+    } catch {
+      // ignore
+    }
+  }, [song?.id, exploreVideoId])
 
   if (!song && !exploreVideoId) {
     return (
@@ -297,23 +336,46 @@ export default function PlayPage() {
 
           {editMode && (
             <div className="mt-4 border border-dashed border-accent p-3">
-              <div className="text-[10px] uppercase tracking-eyebrow text-accent mb-2">
-                Edit mode · timing helper
+              <div className="flex items-baseline justify-between mb-2">
+                <div className="text-[10px] uppercase tracking-eyebrow text-accent">
+                  Edit mode · timing helper · {editBuffer.length} hit{editBuffer.length === 1 ? '' : 's'}
+                </div>
+                {editBuffer.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => persistEditBuffer([])}
+                    className="text-[10px] uppercase tracking-eyebrow text-ink-40 hover:text-ink transition-colors"
+                  >
+                    Clear
+                  </button>
+                )}
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 <button
                   type="button"
                   onClick={() => {
-                    const snippet = `{ "t": ${currentTime.toFixed(2)}, "chord": "?" },`
-                    navigator.clipboard?.writeText(snippet).catch(() => {})
+                    const snippet = `{ "t": ${currentTime.toFixed(2)}, "chord": "?" }`
+                    persistEditBuffer([...editBuffer, snippet])
                   }}
                   className="px-3 py-1.5 rounded-full bg-ink text-paper text-[12px] hover:bg-accent transition-colors min-h-[32px]"
-                  aria-label="Copy current timestamp as a ChordHit JSON snippet"
+                  aria-label="Append the current timestamp as a ChordHit"
                 >
-                  Copy hit @ {formatTime(currentTime)}
+                  + hit @ {formatTime(currentTime)}
+                </button>
+                <button
+                  type="button"
+                  disabled={editBuffer.length === 0}
+                  onClick={() => {
+                    const out = `[\n  ${editBuffer.join(',\n  ')}\n]`
+                    navigator.clipboard?.writeText(out).catch(() => {})
+                  }}
+                  className="px-3 py-1.5 rounded-full border border-ink-20 text-ink text-[12px] hover:border-ink disabled:opacity-40 transition-colors min-h-[32px]"
+                  aria-label="Copy the full timeline buffer to clipboard"
+                >
+                  Copy timeline ({editBuffer.length})
                 </button>
                 <span className="text-[11px] text-ink-40 font-serif italic">
-                  Pastes <code className="text-ink">{`{ "t": …, "chord": "?" },`}</code> into clipboard. Replace "?" with the chord name.
+                  Buffered locally; paste into <code className="text-ink">songs.json</code> when done. Replace each "?".
                 </span>
               </div>
             </div>

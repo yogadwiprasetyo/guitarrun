@@ -423,6 +423,8 @@ MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2
 - `?edit=1` on PlayPage shows a "Copy hit @ M:SS" button that puts `{ "t": …, "chord": "?" },` on the clipboard for contributors.
 - Trainer Esc stops a running drill; button label updated to "Stop · Esc".
 - ChordValidator silence gate: no chord readout when chroma magnitude < 0.05; reads "silent · play a chord".
+- Edit mode buffer: `?edit=1` accumulates timestamps in `localStorage:gr:edit:buffer:<id>`; "Copy timeline (N)" emits the full JSON array. Survives reload.
+- Recently played: last 8 visits (curated or explore) tracked in `localStorage:gr:recent`; rendered on Home above the song grid; hides when empty.
 
 # v3 P3 — Auto-extraction backend
 - Architecture: `docs/09-V3-PHASE-3-EXTRACTION.md`. Backend code: `backend/modal_app.py` + `backend/README.md`.

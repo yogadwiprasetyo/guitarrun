@@ -103,8 +103,11 @@ type ChordShape = { name: string; notes: string[]; positions: ChordPosition[] }
 
 ### Storage
 - React state for player, pitch, search, filter, drill.
-- `localStorage`: `gr:tuner:mode` only.
-- No IndexedDB, no cookies, no dates.
+- `localStorage`:
+  - `gr:tuner:mode` (string)
+  - `gr:edit:buffer:<id>` (JSON array of pending ChordHit snippets, v3 P4 polish)
+  - `gr:recent` (JSON array of up to 8 RecentEntry — `{id, title, artist, youtubeId, kind: 'curated'|'explore', visitedAt: epoch ms}`)
+- No IndexedDB, no cookies. Only timestamps stored: `visitedAt` epoch ms (UI never formats it).
 
 ## Performance Budget
 

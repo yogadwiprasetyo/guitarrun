@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import SongCard from '../components/SongCard'
 import SongFilterBar, { type SongFilterState } from '../components/SongFilterBar'
 import SongUrlInput from '../components/SongUrlInput'
+import RecentlyPlayed from '../components/RecentlyPlayed'
 import { filterSongs, songs } from '../lib/songs'
 
 const INITIAL_FILTER: SongFilterState = {
@@ -64,6 +65,10 @@ export default function HomePage() {
       <section className="pt-10 sm:pt-14">
         <div className="mb-8">
           <SongUrlInput />
+        </div>
+
+        <div className="mb-8">
+          <RecentlyPlayed />
         </div>
 
         <div className="flex items-baseline justify-between mb-6 gap-4">

@@ -49,6 +49,12 @@ Adds a clipboard helper under the seek buttons: tap "Copy hit @ M:SS" → `{ "t"
 ### F14 — Trainer Keyboard Shortcuts *(v2.5.1 polish)*
 `Esc` stops a running drill. Stop button labeled "Stop · Esc".
 
+### F15 — Edit-Mode Timing Buffer *(v2.5.1 polish)*
+`?edit=1` mode now buffers multiple `+ hit @ M:SS` actions in localStorage (`gr:edit:buffer:<id>`). "Copy timeline (N)" emits the full JSON array for paste into `songs.json`. Survives page reload — contributors can hand-time a 3-minute song in one sitting.
+
+### F16 — Recently Played *(v2.5.1 polish)*
+Home shows the last 8 songs visited (curated or explore), persisted in `localStorage:gr:recent`. One-click resume; "Clear" button. Hidden when empty.
+
 ### F11 — Auto-Extraction *(v3 P3)*
 Take any YouTube URL → backend pipeline produces chord progression + BPM + chord set; lyrics in stage 3.4. **Backend code complete on Modal** (`backend/modal_app.py`): yt-dlp downloads audio → cached in Modal Volume; librosa extracts BPM via beat tracking; chromagram + 60-template cosine match yields the chord timeline; persisted in Modal Dict.
 
