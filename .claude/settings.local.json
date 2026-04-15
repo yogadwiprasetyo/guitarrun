@@ -16,7 +16,11 @@
       "Bash(brew install:*)",
       "Bash(export PATH=\"/opt/homebrew/bin:$PATH\")",
       "Bash(gh --version)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'docs: plan v2.1 neck-visualization play-along:*)",
+      "Bash(pnpm add:*)"
     ]
   }
 }
