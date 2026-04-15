@@ -21,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="play/:songId" element={<PlayPage />} />
+          <Route path="play" element={<PlayPage />} />
           <Route path="tuner" element={<TunerPage />} />
           <Route path="chords" element={<ChordsPage />} />
           <Route path="trainer" element={<TrainerPage />} />

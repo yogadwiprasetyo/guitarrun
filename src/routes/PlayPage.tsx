@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import ChordDiagram from '../components/ChordDiagram'
 import ChordStrip from '../components/ChordStrip'
 import { Fretboard } from '../components/Fretboard'
@@ -29,9 +29,24 @@ function useOrientationOnce(): 'horizontal' | 'vertical' {
   return orientation
 }
 
+type DifficultyMode = 'beginner' | 'intermediate' | 'advanced' | 'original'
+const MODE_OPTIONS: DifficultyMode[] = ['beginner', 'intermediate', 'advanced', 'original']
+
 export default function PlayPage() {
   const { songId } = useParams<{ songId: string }>()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const ytParam = searchParams.get('yt')
+  const modeParam = (searchParams.get('mode') as DifficultyMode | null) ?? 'original'
+  const mode: DifficultyMode = MODE_OPTIONS.includes(modeParam) ? modeParam : 'original'
   const song = songId ? findSong(songId) : undefined
+  const exploreVideoId = !song && ytParam ? ytParam : null
+
+  const setMode = (next: DifficultyMode) => {
+    const params = new URLSearchParams(searchParams)
+    if (next === 'original') params.delete('mode')
+    else params.set('mode', next)
+    setSearchParams(params, { replace: true })
+  }
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   const holderRef = useRef<HTMLDivElement | null>(null)
 
@@ -44,10 +59,10 @@ export default function PlayPage() {
     return () => {
       setContainer(null)
     }
-  }, [song?.youtubeId])
+  }, [song?.youtubeId, exploreVideoId])
 
   const { status, currentTime, play, pause, seek } = useYouTubePlayer(
-    song?.youtubeId ?? '',
+    song?.youtubeId ?? exploreVideoId ?? '',
     container,
   )
 
@@ -77,7 +92,7 @@ export default function PlayPage() {
     ? describeShapeForA11y(currentFretShape, activeHit.chord)
     : 'Fretboard idle — press play'
 
-  if (!song) {
+  if (!song && !exploreVideoId) {
     return (
       <div className="max-w-xl mx-auto px-6 py-24 text-center">
         <h1 className="font-serif italic text-[clamp(48px,8vw,72px)] mb-3">Song not found.</h1>
@@ -90,6 +105,56 @@ export default function PlayPage() {
       </div>
     )
   }
+
+  if (!song && exploreVideoId) {
+    return (
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-24">
+        <Link
+          to="/"
+          className="inline-block text-[11px] uppercase tracking-eyebrow text-ink-40 hover:text-ink transition-colors"
+        >
+          ← Songs
+        </Link>
+        <header className="mt-4 pb-8 border-b border-ink-20">
+          <div className="text-[11px] uppercase tracking-eyebrow text-accent mb-2">
+            Explore mode · auto-extraction queued
+          </div>
+          <h1 className="font-serif font-semibold leading-[0.98] tracking-[-0.025em] text-[clamp(36px,6vw,56px)]">
+            New song · {exploreVideoId}
+          </h1>
+          <p className="font-serif italic text-[17px] text-ink-60 mt-3 max-w-xl">
+            We can play this video, but the chord progression isn’t in the curated library yet.
+            Auto chord/lyrics/BPM extraction ships in v3 Phase 3 (backend pipeline). Until
+            then, see {' '}
+            <Link to="/chords" className="text-accent underline">
+              Chord Finder
+            </Link>{' '}
+            or contribute timing via {' '}
+            <a
+              href="https://github.com/yogadwiprasetyo/guitarrun/blob/main/docs/08-CONTRIBUTING.md"
+              className="text-accent underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              the contribution guide
+            </a>
+            .
+          </p>
+        </header>
+
+        <div className="mt-8 bg-surface border border-ink-20 aspect-video overflow-hidden">
+          <div ref={holderRef} className="w-full h-full" />
+        </div>
+        {status === 'error' && (
+          <div className="mt-3 text-[13px] text-accent font-serif italic">
+            Video unavailable for embedding.
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  if (!song) return null
 
   const isPlaying = status === 'playing'
 
@@ -115,6 +180,28 @@ export default function PlayPage() {
           {song.title}
         </h1>
         <p className="font-serif italic text-[20px] text-ink-60 mt-1">{song.artist}</p>
+
+        <div className="mt-5 flex flex-wrap items-center gap-2" role="group" aria-label="Difficulty mode">
+          <span className="text-[11px] uppercase tracking-eyebrow text-ink-40 mr-2">Mode</span>
+          {MODE_OPTIONS.map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => setMode(m)}
+              aria-pressed={mode === m}
+              className={`px-3 py-1.5 rounded-full text-[12px] border transition-colors min-h-[32px] ${
+                mode === m
+                  ? 'bg-ink text-paper border-ink'
+                  : 'border-ink-20 text-ink-60 hover:border-ink'
+              }`}
+            >
+              {m}
+            </button>
+          ))}
+          <span className="ml-2 text-[10px] text-ink-40 font-serif italic">
+            (Beginner / Intermediate / Advanced substitution table — Phase 4)
+          </span>
+        </div>
       </header>
 
       <section

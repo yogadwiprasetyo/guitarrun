@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SongCard from '../components/SongCard'
 import SongFilterBar, { type SongFilterState } from '../components/SongFilterBar'
+import SongUrlInput from '../components/SongUrlInput'
 import { filterSongs, songs } from '../lib/songs'
 
 const INITIAL_FILTER: SongFilterState = {
@@ -61,6 +62,10 @@ export default function HomePage() {
       </section>
 
       <section className="pt-10 sm:pt-14">
+        <div className="mb-8">
+          <SongUrlInput />
+        </div>
+
         <div className="flex items-baseline justify-between mb-6 gap-4">
           <div>
             <div className="text-[11px] uppercase tracking-eyebrow text-ink-40 mb-1">
