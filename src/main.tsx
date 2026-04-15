@@ -7,6 +7,7 @@ import HomePage from './routes/HomePage'
 import PlayPage from './routes/PlayPage'
 import TunerPage from './routes/TunerPage'
 import ChordsPage from './routes/ChordsPage'
+import TrainerPage from './routes/TrainerPage'
 import NotFoundPage from './routes/NotFoundPage'
 import DesignGalleryPage from './routes/DesignGalleryPage'
 import MinimalPage from './pages/design/minimal/MinimalPage'
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="play/:songId" element={<PlayPage />} />
           <Route path="tuner" element={<TunerPage />} />
           <Route path="chords" element={<ChordsPage />} />
+          <Route path="trainer" element={<TrainerPage />} />
           <Route path="design" element={<DesignGalleryPage />} />
           <Route path="design/minimal" element={<MinimalPage />} />
           <Route path="design/studio" element={<StudioPage />} />
