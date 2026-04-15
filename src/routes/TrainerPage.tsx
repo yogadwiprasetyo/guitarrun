@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Fretboard } from '../components/Fretboard'
+import TapTempo from '../components/TapTempo'
 import { chords, findChord } from '../lib/chords'
 import {
   computeFretWindow,
@@ -196,6 +197,9 @@ export default function TrainerPage() {
               <span>30</span>
               <span>95</span>
               <span>160</span>
+            </div>
+            <div className="mt-4">
+              <TapTempo onChange={(b) => setBpm(Math.max(30, Math.min(160, b)))} min={30} max={160} />
             </div>
           </fieldset>
 
