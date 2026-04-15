@@ -83,14 +83,14 @@ export function Fretboard({
           style={{ display: 'block' }}
         >
           <FretboardGrid window={fretWindow} orientation={orientation} size={size} />
-          {ghostRendered && (
+          {ghostRendered && next && (
             <g opacity={ghostOpacity} style={{ transition: reduceMotion ? 'none' : 'opacity 150ms linear' }}>
-              <ShapeLayer rendered={ghostRendered} shape={next!} ghost />
+              <ShapeLayer rendered={ghostRendered} shape={next} ghost />
             </g>
           )}
-          {rendered && (
+          {rendered && current && (
             <g opacity={currentOpacity} style={{ transition: reduceMotion ? 'none' : 'opacity 150ms linear' }}>
-              <ShapeLayer rendered={rendered} shape={current!} />
+              <ShapeLayer rendered={rendered} shape={current} />
             </g>
           )}
         </svg>
