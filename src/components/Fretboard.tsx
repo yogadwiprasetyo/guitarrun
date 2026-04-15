@@ -85,12 +85,12 @@ export function Fretboard({
           <FretboardGrid window={fretWindow} orientation={orientation} size={size} />
           {ghostRendered && next && (
             <g opacity={ghostOpacity} style={{ transition: reduceMotion ? 'none' : 'opacity 150ms linear' }}>
-              <ShapeLayer rendered={ghostRendered} shape={next} ghost />
+              <ShapeLayer rendered={ghostRendered} shape={next} size={size} window={fretWindow} orientation={orientation} ghost />
             </g>
           )}
           {rendered && current && (
             <g opacity={currentOpacity} style={{ transition: reduceMotion ? 'none' : 'opacity 150ms linear' }}>
-              <ShapeLayer rendered={rendered} shape={current} />
+              <ShapeLayer rendered={rendered} shape={current} size={size} window={fretWindow} orientation={orientation} />
             </g>
           )}
         </svg>
@@ -210,14 +210,20 @@ function FretboardGrid({
 function ShapeLayer({
   rendered,
   shape,
+  size,
+  window: fretWindow,
+  orientation,
   ghost = false,
 }: {
   rendered: RenderedShape
   shape: FretboardShape
+  size: { width: number; height: number }
+  window: FretWindow
+  orientation: Orientation
   ghost?: boolean
 }) {
   const dotFill = ghost ? 'var(--color-accent, #5b8def)' : 'var(--color-accent, #4561e0)'
-  const dotRadius = findDotRadius(rendered)
+  const dotRadius = computeDotRadius(size, fretWindow, orientation)
   return (
     <g>
       {rendered.markers.map((m) => (
@@ -284,10 +290,16 @@ function usePrefersReducedMotion(): boolean {
   return reduce
 }
 
-function findDotRadius(rendered: RenderedShape): number {
-  if (rendered.barres.length > 0) {
-    const b = rendered.barres[0]
-    return Math.min(b.width, b.height) / 2
-  }
-  return 12
+function computeDotRadius(
+  size: { width: number; height: number },
+  fretWindow: FretWindow,
+  orientation: Orientation,
+): number {
+  const isHorizontal = orientation === 'horizontal'
+  const longAxis = isHorizontal ? size.width : size.height
+  const shortAxis = isHorizontal ? size.height : size.width
+  const padding = 0.06
+  const fretStep = (longAxis * (1 - padding)) / (fretWindow.maxFret - fretWindow.minFret)
+  const stringStep = shortAxis / 5
+  return Math.max(6, Math.min(fretStep, stringStep) * 0.32)
 }
