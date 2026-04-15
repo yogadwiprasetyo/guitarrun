@@ -1,76 +1,61 @@
-# Roadmap — Post-MVP
+# Roadmap — Status
 
-Ranked by **(Impact × Validation Value) / Effort**. Do **not** start any v2 work until MVP metrics from `docs/01-PRD.md` are measured for ≥2 weeks.
+Updated 2026-04-15. Most build-able items shipped; remaining items are gated on retention signal or active R&D.
 
-## Priority order
+## Status
 
-| # | Feature | Effort | Impact | Prereq |
-|---|---|---|---|---|
-| 1 | Neck-Visualization Play-Along (polished hero view) | 2 d | High | MVP Song Player stable |
-| 2 | Chord Trainer drills | 2 d | Med-High | Chord Finder |
-| 3 | Song library expansion (15→50→200) + search/filter | 2 d | High | MVP data schema |
-| 4 | Monophonic chord validation (silent drill, no backing track) | 3 d | Medium | Tuner hook |
-| 5 | Auto BPM detection (tap-tempo → audio) | 1 d tap / 4 d audio | Low-Med | — |
-| 6 | Community-submitted song timings (GitHub PR flow, no auth) | 3 d | High long-tail | Authoring tool, moderation checklist |
-| 7 | Polyphonic chord validation against backing track | 3+ weeks R&D | Unknown | External ML; research bet |
-| 8 | Accounts + saved progress | 5 d | Medium | Retention signal |
+| # | Feature | Status | Notes |
+|---|---|---|---|
+| 1 | Neck-Visualization Play-Along | **Shipped v2.1** | Hero fretboard on `/play/:songId`, dual orientation, ghost cross-fade, reduced-motion. |
+| 2 | Chord Trainer drills | **Shipped v2.3** | `/trainer` route — pool selector, BPM, duration, beat progress, score. |
+| 3 | Library expansion + filter | **Infra shipped v2.2** | `SongFilterBar` (difficulty, decade, chord-subset). Library still 3 songs — growth gated on community PRs (#6). |
+| 4 | Monophonic chord validation | **Deferred** | 3-day R&D effort. Out of v2.x scope; no validated demand yet. |
+| 5a | Tap tempo | **Shipped v2.4** | `TapTempo` widget; integrated in Trainer BPM fieldset. |
+| 5b | Acoustic BPM detection | **Deferred** | 4-day R&D; revisit only if manual BPM proves a real friction. |
+| 6 | Community song submissions | **Shipped v2.5** | `docs/08-CONTRIBUTING.md`. PR-based; no backend. |
+| 7 | Polyphonic chord validation | **Deferred (R&D)** | 3+ weeks; explicit gate per original brief — do not attempt until #1–#5 prove demand. |
+| 8 | Accounts + saved progress | **Deferred** | Retention-gated. Revisit if MVP metrics show users returning + losing context. |
 
-## Detail
+## What ships in production today
 
-### 1. Neck-Visualization Play-Along  *(E: 2d, I: High)*
-Replace the flat chord strip with a fretboard background where dots light up on the correct frets in sync with the song. The "wow" moment that earns word-of-mouth.
-**Depends on:** stable MVP Player; decide SVG (smaller) vs. react-three-fiber (3D).
+- Song Player with synced chord strip + neck-visualization fretboard
+- Chord Finder with search + diagrams
+- Tuner (mic + Pitchy)
+- Chord Trainer with tap-tempo
+- Home filter bar
+- Contribution flow for new songs
 
-### 2. Chord Trainer  *(E: 2d, I: Med-High)*
-Timed drills: "switch G → D in 2 seconds." Configurable chord pool, BPM, duration. Visual prompt + self-report in first pass — no audio validation yet.
-**Depends on:** Chord Finder (reuses diagram).
+## What's next (recommended order, gated on data)
 
-### 3. Library expansion + filter  *(E: 2d, I: High)*
-Grow to 50 curated songs. Filter by difficulty, chord set ("only G C D Em songs"), decade. Required so the product doesn't feel empty.
-**Depends on:** MVP schema; build a dev-only timing authoring tool (timestamp clipboard logger) first.
+1. **Measure** v2.x in the wild for ≥2 weeks. Targets in `docs/01-PRD.md §Success Metrics`.
+2. If 60s play-rate lifts <3pp post v2.1 → freeze visual polish, iterate Chord Trainer.
+3. If users explicitly ask for chord validation while a song plays → start scoping #4 as the stepping stone to #7.
+4. If retention signal appears → start #8 (localStorage first, then Supabase only if cross-device is requested).
 
-### 4. Monophonic chord validation  *(E: 3d, I: Med)*
-User strums a chord in a silent drill; detect root + quality via chroma vector. No source separation needed. Stepping stone to the hard version.
-**Depends on:** generalize `useMicPitch` → `useMicAudio` with FFT + chroma.
-
-### 5. Auto BPM detection  *(E: 1d tap / 4d audio, I: Low-Med)*
-Phase 5a: tap-tempo widget (user taps along). 1 day. Phase 5b: acoustic BPM via `meyda` / autocorrelation. Only valuable if it removes manual work reliably.
-
-### 6. Community song submissions  *(E: 3d, I: High long-tail)*
-PR-based: users fork, run authoring tool locally, open PR with a new `songs.json` entry. No auth, no backend — moderation is GitHub review.
-**Depends on:** authoring tool from #3; short contribution guide.
-
-### 7. Polyphonic chord validation vs. backing track  *(E: 3+ weeks, I: Unknown)*
-The original brief's hardest feature. Requires either source separation (Demucs in browser via WASM) or pre-computed chord hits with generous tolerance. **Do not attempt until #1–#5 are live** and users explicitly ask for it.
-
-### 8. Accounts + progress  *(E: 5d, I: Med)*
-Only justified if metrics show users returning and losing context. Start with localStorage; graduate to Supabase/Clerk only if cross-device is requested.
-
-## Dependency Graph
+## Dependency graph (current)
 
 ```
-MVP (Player, Tuner, Chord Finder)
-  ├── [1] Neck Viz ────────┐
-  ├── [2] Chord Trainer ───┼──► [4] Mono Validation ──► [7] Polyphonic
-  ├── [3] Library + Filter ┤                               ▲
-  │       └─► [6] Submissions                              │
-  └── [5a] Tap Tempo ──► [5b] Audio BPM ───────────────────┘
+MVP (Player, Tuner, Chord Finder)               [shipped]
+  ├── [1] Neck Viz                              [shipped v2.1]
+  ├── [2] Chord Trainer ───────┐                [shipped v2.3]
+  ├── [3] Library + Filter ────┤                [infra shipped v2.2]
+  │       └─► [6] Submissions  │                [shipped v2.5]
+  ├── [5a] Tap Tempo ──────────┤                [shipped v2.4]
+  └─────────────────────────────┴──► [4] Mono Validation ──► [7] Polyphonic
+                                                      [deferred]   [deferred R&D]
 
-                          [8] Accounts (gated on retention signal)
+                                  [8] Accounts (retention-gated, deferred)
 ```
 
-## Effort × Impact Matrix
+## Effort × Impact (residual)
 
 ```
         Low Impact            High Impact
 High  ┌───────────────────┬───────────────────┐
 Effort│ [8] Accounts      │ [4] Mono Validate │
-      │ [7] Polyphonic    │ [6] Submissions   │
-      │                   │ [1] Neck Viz      │
+      │ [7] Polyphonic    │                   │
       ├───────────────────┼───────────────────┤
-Low   │ [5a] Tap Tempo    │ [2] Chord Trainer │
-Effort│                   │ [3] Library Grow  │
+Low   │ [5b] Audio BPM    │ — all done —      │
+Effort│                   │                   │
       └───────────────────┴───────────────────┘
 ```
-
-**Start top-right. Avoid top-left until signal justifies it.**

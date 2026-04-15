@@ -1,25 +1,27 @@
 # CLAUDE.md — GuitarRun
 
 ## What this is
-A 1-day MVP of a client-only web app that helps a casual guitarist play along to curated YouTube songs, tune their guitar, and look up chord shapes.
+Client-only web app that helps a casual guitarist play along to curated YouTube songs, tune their guitar, look up chord shapes, and run chord-switch drills. Started as a 1-day MVP; v2.x added the neck-visualization fretboard, library filter, chord trainer, tap tempo, and a community contribution flow.
 
-Canonical docs:
-- `docs/01-PRD.md` — user, problem, features, scope
-- `docs/02-TRD.md` — stack, architecture, data, risks
-- `SKILL.md` — build order, file layout, checklists
-- `docs/05-ROADMAP.md` — v2 features
-- `docs/06-NEXT-STEPS.md` — hour-by-hour plan
+Canonical docs (always re-read at session start):
+- `docs/01-PRD.md` — user, problem, shipped features, scope, success metrics
+- `docs/02-TRD.md` — stack, module map, data model, perf budgets, risks
+- `.claude/skill/SKILL.md` — build order, file layout, per-feature patterns, subagent cheat-sheet
+- `docs/05-ROADMAP.md` — status of all roadmap items (shipped vs. deferred)
+- `docs/06-NEXT-STEPS.md` — measure-then-decide playbook + v2.5.1 backlog
 - `docs/07-DEPLOY.md` — hosting, monitoring, rollback
+- `docs/08-CONTRIBUTING.md` — how to add a song / chord shape (Roadmap #6)
 
 ## Goals
-1. Ship a live, public URL in one working day.
-2. Validate that casual guitarists will actually press play and stay ≥60 s.
-3. Keep the codebase small enough that a v2 feature is a few hours, not a few days.
+1. **Shipped:** live public URL with MVP + v2.x features.
+2. **In progress:** validate that casual guitarists press play and stay ≥60 s; that the fretboard hero lifts that rate; that the trainer is used.
+3. Keep the codebase small enough that any future v3 feature is a few hours, not a few days.
 
 ## Non-goals
-- Auto chord detection from arbitrary YouTube audio (v2+).
-- Real-time polyphonic chord validation against mixed audio (research problem).
-- User accounts, subscriptions, or any backend.
+- Auto chord detection from arbitrary YouTube audio (Roadmap #7, R&D-gated).
+- Real-time polyphonic chord validation against mixed audio (Roadmap #7).
+- Monophonic chord validation in silent drill (Roadmap #4, deferred — no demand yet).
+- User accounts, subscriptions, or any backend (Roadmap #8, retention-gated).
 - Feature parity with Ultimate Guitar, Chordify, Songsterr.
 - "Learn guitar from zero" curriculum.
 
@@ -48,12 +50,13 @@ Canonical docs:
 
 ## Workflow Preferences
 
-- **Build order is non-negotiable:** scaffold → chord finder → tuner → player → home → deploy. Each step feeds the next.
-- **Ship early, iterate.** Deploy a "hello world" to Vercel in the first hour. Every subsequent push goes to a preview URL.
-- **Commit cadence:** one commit per feature milestone (per `SKILL.md` step). Conventional commits: `feat:`, `fix:`, `chore:`.
+- **Re-read canonical docs at session start.** Anything in `docs/` is the source of truth, not session memory.
+- **Commit cadence:** one focused commit per feature milestone. Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`.
+- **Push directly to `main`.** No PRs required — current authorization (see workflow notes in v2.x sessions).
 - **Don't refactor mid-feature.** Get it working, land it, then clean.
-- **Test manually with a real guitar + a real phone** before calling a feature "done." No guitar nearby = feature not done.
-- **Whenever a feature risks stalling >30 min past estimate, cut it.** Thesis is "ship today." Scope > polish.
+- **Test manually with a real guitar + a real phone** before calling a player-facing feature "done." No guitar nearby = note it as pending.
+- **Cut scope past 50 % estimate overrun.** Thesis is "ship a working slice." Scope > polish.
+- **Update PRD, TRD, NEXT-STEPS, SKILL.md, CLAUDE.md inline with each feature ship.** Docs drift = future-you lost.
 
 ## Project-Specific Rules
 

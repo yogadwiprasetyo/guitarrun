@@ -1,49 +1,68 @@
-# PRD — GuitarRun v2.1 (Neck-Visualization Play-Along)
+# PRD — GuitarRun v2.5
+
+Updated 2026-04-15. MVP + Roadmap items 1, 2, 3 (infra), 5a, 6 are live.
 
 ## Persona
-**Riya, 24, casual guitarist.** Owns an acoustic, knows 6–8 open chords (G, C, D, Em, Am, E, A, Dm). Hears a song on Spotify/YouTube and wants to play along in under 5 minutes. Bounces from Ultimate Guitar because of ads, broken auto-scroll, and tuner apps living in a separate tab.
+**Riya, 24, casual guitarist.** Owns an acoustic, knows 6–8 open chords (G, C, D, Em, Am, E, A, Dm). Wants to play along to a YouTube song in under 5 minutes. Bounces from Ultimate Guitar (ads, broken auto-scroll, separate tuner tab).
 
 ## Problem
-Learning a new song requires juggling 3 tools: YouTube (to hear it), a tab site (to see chords), and a tuner app (to tune up). Nothing syncs. Nothing is designed for "play this song right now." **The MVP's flat chord strip works, but it doesn't *show you where to put your fingers* — you still have to mentally map a chord name to a shape.**
+Three-tool juggling: YouTube + tab site + tuner app. Nothing syncs. Nothing is designed for "play this song right now." MVP solved sync + chord names; v2.1 added the **finger-placement visual** so beginners don't have to mentally map chord names to shapes.
 
-## Shipped (MVP — commit `66cbbc2`)
-- F1 — Song Player with YouTube embed + synced chord strip
-- F2 — Guitar Tuner (mic + Pitchy)
-- F3 — Chord Finder (search + SVG diagrams)
+## Shipped features
 
-## v2.1 Features
+### F1 — Song Player *(MVP)*
+Pick song → embedded YouTube + chord timeline auto-scrolls + active chord highlighted with diagram.
 
-### F4 — Neck-Visualization Play-Along *(this sprint, 2 days)*
-**User story:** As Riya, I open a song, press play, and see a guitar neck where the correct fret positions light up in time with the song. I don't have to remember what "Cadd9" looks like — my eyes go to the glowing dots and my fingers follow.
+### F2 — Tuner *(MVP)*
+Mic + Pitchy McLeod pitch detection; ±5 cents needle, EADGBE auto-target.
 
-**Acceptance:**
-- `/play/:songId` renders a horizontal fretboard above the existing chord strip on desktop (≥641 px); rotates to vertical on mobile (≤640 px).
-- Active chord: fretted positions render as solid dots with finger numbers inside; muted strings show "×" left of the nut; open strings show "○".
-- Barres render as a single rounded bar across the fret, not as discrete dots.
-- **Next chord ghost:** upcoming chord fades in at `T − 0.5 s` at 40 % opacity, cross-fades to 100 % at `T`, current chord fades out at `T + 0.2 s`.
-- Fret window auto-fits the song's chord set with a minimum of 0–5; expands up to 0–12 if a shape needs it. Window is computed once per song load.
-- Active chord name floats above the nut; optional `lyric` line sits under the fretboard (existing `ChordHit.lyric` field — no schema change).
-- Stays in lockstep with the existing chord strip (same `useActiveChord` source of truth); seeking the video updates both.
-- `prefers-reduced-motion: reduce` → instant swap, no cross-fade.
-- Accessibility: `role="img"` with `aria-label` describing the active chord (e.g. "G major: 3rd fret low E, 2nd fret A, open D G B, 3rd fret high E").
-- No regression on LCP, TBT, or bundle budget (see TRD §Browser Compatibility).
+### F3 — Chord Finder *(MVP)*
+≥80 chord shapes, fuzzy search, SVG diagrams.
 
-**Success metric delta (measured 2 weeks post-ship):**
-- "Pressed play and stayed ≥60 s" rate lifts from MVP baseline by **≥10 percentage points**. (Hypothesis: visual chord shapes reduce "I bailed because I couldn't keep up" drop-off.)
-- ≥3 of 5 retested guitarists say the fretboard view is "the reason I'd come back."
+### F4 — Neck-Visualization Play-Along *(v2.1)*
+`/play/:songId` shows a fretboard hero where dot positions light up in time with the song. Horizontal on desktop, vertical on mobile (locked at page-load 640 px breakpoint). Next-chord ghost cross-fade T−0.5s → swap → T+0.2s. `prefers-reduced-motion: reduce` → instant swap. `aria-label` per chord change.
 
-**Kill criteria:** if the 60 s rate does not lift by ≥3 pp after 2 weeks, the feature is cosmetic — freeze it, move to Roadmap #2 (Chord Trainer).
+### F5 — Library Filter *(v2.2)*
+`SongFilterBar` on Home — difficulty, decade, "songs that use only these chords" subset filter. `Song` schema gained optional `decade` + `tags`.
 
-## Out of Scope (v2.1)
+### F6 — Chord Trainer *(v2.3)*
+`/trainer` — pool selector (any open chords), BPM 30–160, duration 60s/2m/5m/endless. Beat progress bar, score counter. Reuses `<Fretboard />`. Self-report; no audio validation (deferred to Roadmap #4).
+
+### F7 — Tap Tempo *(v2.4)*
+`TapTempo` widget — rolling avg over last 8 taps, 2 s reset window. Wired into Trainer BPM fieldset. Reusable elsewhere.
+
+### F8 — Community Song Submissions *(v2.5)*
+PR-based via `docs/08-CONTRIBUTING.md`. No backend; review is the gate.
+
+## Out of Scope (current)
+
 | Cut | Why |
 |---|---|
-| 3D fretboard (react-three-fiber) | Bundle cost outweighs the wow delta at this stage; revisit in v3 if metrics justify. |
-| Animated strumming hand | Scope creep; distracts from the fret dots that matter. |
-| Auto fret-window expansion mid-song | Jarring; compute once per song. |
-| Left-handed mirroring | v2.2 — one-line flip, defer until asked. |
-| Multiple chord voicings per name | Use `positions[0]` only; picker is v2.2. |
-| Chord Trainer, Library expansion, Mono validation | Roadmap #2–#4; sequenced after this lands. |
+| User accounts / saved progress | Roadmap #8, retention-gated. |
+| Auto chord detection from arbitrary YouTube URL | Roadmap #7, R&D — 3+ weeks. |
+| Real-time mic chord validation while song plays | Roadmap #7. |
+| Monophonic chord validation in silent drill | Roadmap #4, deferred until demand. |
+| Acoustic BPM detection | Roadmap #5b, deferred — manual + tap tempo cover the need. |
+| 3D fretboard | Bundle cost vs. wow delta — revisit v3. |
+| Left-handed flip | One-line change, defer until asked. |
+| Multi-voicing chord picker | v2.2+ — v2.x uses `positions[0]`. |
 
-## Dependencies
-- Stable MVP Song Player (shipped in commit `66cbbc2`).
-- Existing `ChordShape.positions[0]` data is sufficient; no data re-authoring required.
+## Success Metrics
+
+Measured 2 weeks post-v2.5 launch:
+
+| Metric | Target |
+|---|---|
+| Activation: landing → song click | ≥40 % |
+| Core action: song page → press play AND stay ≥60 s | MVP baseline ≥25 % → **v2.1+ ≥35 %** |
+| Tool use: tuner sessions / total sessions | ≥15 % |
+| New: trainer drill started → completed (any duration) | ≥40 % |
+| Qualitative: ≥3 of 5 retested guitarists call the fretboard "the reason I'd come back" | y/n |
+
+**Kill criteria:**
+- 60s play-rate not lifting ≥3 pp after v2.1 → freeze visual polish, focus on Trainer.
+- <10 % of song-page visitors press play → core loop broken; stop adding features, fix.
+
+## Roadmap reference
+
+See `docs/05-ROADMAP.md` for the full status table.

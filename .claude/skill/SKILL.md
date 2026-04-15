@@ -348,3 +348,63 @@ src/
 ```
 
 No changes to `useYouTubePlayer.ts`, `useMicPitch.ts`, `lib/pitch.ts`, `data/*.json`.
+
+---
+
+# v2.2 — Library Filter (Roadmap #3 infra)
+
+`SongFilterBar` on Home: difficulty + decade + chord-subset.
+
+- **Schema:** `Song` gains optional `decade?: string`, `tags?: string[]`. Backward-compatible.
+- **Helpers:** `lib/songs.ts` adds `filterSongs(songs, opts)` and `allChords(songs)`.
+- **Component:** `components/SongFilterBar.tsx` — controlled, `aria-pressed` chips, "Clear" button, "Show songs that use **only** these chords" semantics.
+- **Empty state:** dashed border + "No matches" copy.
+
+When growing the library: edit `src/data/songs.json` (see `docs/08-CONTRIBUTING.md`). No further UI work needed.
+
+# v2.3 — Chord Trainer (Roadmap #2)
+
+`/trainer` route. Self-report drill — no mic.
+
+- **State machine:** `idle → running → done` (also `idle` after `stop`).
+- **Tick:** `setInterval(100ms)`; switch chord when `sinceSwitch >= 60/bpm`. Drift acceptable for v2; revisit RAF if reported.
+- **Pool:** any chord whose `name.length ≤ 4` (open-position bias). Toggleable chips.
+- **Reuses:** `<Fretboard />` with horizontal orientation, `computeFretWindow` over selected pool, `describeShapeForA11y` for label.
+- **Settings panel ↔ drill view:** swap inside the same route on `start()/stop()`.
+
+# v2.4 — Tap Tempo (Roadmap #5a)
+
+`components/TapTempo.tsx` — reusable.
+
+- Rolling avg over last 8 taps, 2 s reset window.
+- Clamps to `[min, max]` (default 30–200 bpm).
+- Exposes `onChange(bpm)`. No internal state owner.
+- Wired into Trainer's BPM fieldset; reuse anywhere a BPM input exists.
+- Keyboard: Space + Enter both register a tap.
+
+# v2.5 — Community Submissions (Roadmap #6)
+
+`docs/08-CONTRIBUTING.md` is the feature. PR-based, no backend.
+
+- Verify `youtubeId` embeddability via incognito test.
+- Hand-time chord hits; document `Song` schema with required + optional fields.
+- New chord shapes appended to `chords.json` (one `positions[0]` per name).
+- Local verification: `npm test`, `npx tsc --noEmit`, `npm run dev`.
+
+## Build-order recap (post-v2.5)
+
+```
+MVP → v2.1 Neck-Viz → v2.2 Filter → v2.3 Trainer → v2.4 Tap Tempo → v2.5 Contrib guide
+            (see docs/05-ROADMAP.md for what's next, gated on data)
+```
+
+## Default per-feature pattern (still in effect)
+
+1. Re-read `docs/01-PRD.md`, `docs/02-TRD.md`, `docs/05-ROADMAP.md`.
+2. TDD pure libs via `tdd-guide` subagent.
+3. Implement smallest viable.
+4. Parallel review: `typescript-reviewer` + `code-reviewer`.
+5. `security-reviewer` only if touching user input / external IO.
+6. Verify in preview server, axe-core sweep on the new surface.
+7. Commit + push to `main` (no PR required per current workflow).
+8. Update PRD, TRD, NEXT-STEPS, SKILL.md, CLAUDE.md inline with the change.
