@@ -58,7 +58,7 @@ export default function SongFilterBar({ songs, value, onChange, matchCount }: So
       <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-6 gap-y-4 items-baseline">
         <label className="text-[11px] uppercase tracking-eyebrow text-ink-40">Difficulty</label>
         <div className="flex flex-wrap gap-2">
-          {(['all', 'beginner', 'intermediate'] as const).map((d) => (
+          {(['all', 'beginner', 'intermediate', 'advanced'] as const).map((d) => (
             <button
               key={d}
               type="button"

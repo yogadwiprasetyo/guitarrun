@@ -87,12 +87,14 @@ type Song = {
   title: string
   artist: string
   youtubeId: string
-  difficulty: 'beginner' | 'intermediate'
+  difficulty: 'beginner' | 'intermediate' | 'advanced'   // widened in v3.x
   chordsUsed: string[]
   bpm: number
   timeline: ChordHit[]
   decade?: string                // v2.2
-  tags?: string[]                // v2.2
+  tags?: string[]                // v2.2 — convention: 'placeholder-yt' marks
+                                  // a structural placeholder youtubeId that needs
+                                  // a real verified-embeddable ID before launch
 }
 type ChordHit = { t: number; chord: string; lyric?: string }
 type ChordPosition = { frets: number[]; fingers: number[]; barres?: number[]; baseFret: number }

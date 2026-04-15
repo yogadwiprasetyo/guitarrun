@@ -38,7 +38,7 @@ Edit `src/data/songs.json`. Append an entry that matches the `Song` schema:
   "title": "Song Title",
   "artist": "Artist Name",
   "youtubeId": "abcDEF12345",
-  "difficulty": "beginner",
+  "difficulty": "beginner",          // or "intermediate" | "advanced"
   "chordsUsed": ["G", "C", "D"],
   "bpm": 88,
   "decade": "70s",

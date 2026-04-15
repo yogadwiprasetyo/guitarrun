@@ -11,7 +11,7 @@ export type Song = {
   title: string
   artist: string
   youtubeId: string
-  difficulty: 'beginner' | 'intermediate'
+  difficulty: 'beginner' | 'intermediate' | 'advanced'
   chordsUsed: string[]
   bpm: number
   timeline: ChordHit[]

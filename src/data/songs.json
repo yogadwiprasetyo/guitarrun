@@ -310,5 +310,3705 @@
       "ballad",
       "classic"
     ]
+  },
+  {
+    "id": "perfect-ed-sheeran",
+    "title": "Perfect",
+    "artist": "Ed Sheeran",
+    "youtubeId": "PLc4baba5f3",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 60,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "someone-like-you-adele",
+    "title": "Someone Like You",
+    "artist": "Adele",
+    "youtubeId": "PL47fc3Ac42",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 61,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "let-it-be-the-beatles",
+    "title": "Let It Be",
+    "artist": "The Beatles",
+    "youtubeId": "PLd1b9ae134",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 62,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "wonderwall-oasis-2",
+    "title": "Wonderwall",
+    "artist": "Oasis",
+    "youtubeId": "PLf8ffe8458",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 63,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "yellow-coldplay",
+    "title": "Yellow",
+    "artist": "Coldplay",
+    "youtubeId": "PL18669e3ee",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 64,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "riptide-vance-joy",
+    "title": "Riptide",
+    "artist": "Vance Joy",
+    "youtubeId": "PL58eAb85ec",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 65,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "i-m-yours-jason-mraz",
+    "title": "I'm Yours",
+    "artist": "Jason Mraz",
+    "youtubeId": "PL3Ad4beAd7",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 66,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "stand-by-me-ben-e-king",
+    "title": "Stand By Me",
+    "artist": "Ben E. King",
+    "youtubeId": "PLf55e9ae98",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 67,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "country-roads-john-denver",
+    "title": "Country Roads",
+    "artist": "John Denver",
+    "youtubeId": "PL6a9d572c1",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 68,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "counting-stars-onerepublic",
+    "title": "Counting Stars",
+    "artist": "OneRepublic",
+    "youtubeId": "PL7bbd4fecd",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 69,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "fix-you-coldplay",
+    "title": "Fix You",
+    "artist": "Coldplay",
+    "youtubeId": "PLA8fff4f2A",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 70,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "photograph-ed-sheeran",
+    "title": "Photograph",
+    "artist": "Ed Sheeran",
+    "youtubeId": "PLc825f7efe",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 71,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "hey-there-delilah-plain-white-t-s",
+    "title": "Hey There Delilah",
+    "artist": "Plain White T's",
+    "youtubeId": "PL3ab51448b",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 72,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "shape-of-you-ed-sheeran",
+    "title": "Shape of You",
+    "artist": "Ed Sheeran",
+    "youtubeId": "PL6fe42c461",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 73,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "chasing-cars-snow-patrol",
+    "title": "Chasing Cars",
+    "artist": "Snow Patrol",
+    "youtubeId": "PLd3f12Aa53",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 74,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "all-of-me-john-legend",
+    "title": "All of Me",
+    "artist": "John Legend",
+    "youtubeId": "PL8A98244e7",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 75,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "viva-la-vida-coldplay",
+    "title": "Viva La Vida",
+    "artist": "Coldplay",
+    "youtubeId": "PL6f3Aae5d9",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 76,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "the-scientist-coldplay",
+    "title": "The Scientist",
+    "artist": "Coldplay",
+    "youtubeId": "PL14f553Af2",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 77,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "use-somebody-kings-of-leon",
+    "title": "Use Somebody",
+    "artist": "Kings of Leon",
+    "youtubeId": "PLb16a4641b",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 78,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "demons-imagine-dragons",
+    "title": "Demons",
+    "artist": "Imagine Dragons",
+    "youtubeId": "PLce51cA21c",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 79,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "take-me-home-country-roads-john-denver",
+    "title": "Take Me Home, Country Roads",
+    "artist": "John Denver",
+    "youtubeId": "PLca17bc4c2",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 80,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "thinking-out-loud-ed-sheeran",
+    "title": "Thinking Out Loud",
+    "artist": "Ed Sheeran",
+    "youtubeId": "PL68bfAf62e",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 81,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "hallelujah-leonard-cohen",
+    "title": "Hallelujah",
+    "artist": "Leonard Cohen",
+    "youtubeId": "PL349e76155",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 82,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "hotel-california-eagles",
+    "title": "Hotel California",
+    "artist": "Eagles",
+    "youtubeId": "PLA2A33fa54",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 83,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "zombie-the-cranberries",
+    "title": "Zombie",
+    "artist": "The Cranberries",
+    "youtubeId": "PL85b8fA61f",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 84,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "no-woman-no-cry-bob-marley",
+    "title": "No Woman No Cry",
+    "artist": "Bob Marley",
+    "youtubeId": "PLcaeddef99",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 85,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "imagine-john-lennon",
+    "title": "Imagine",
+    "artist": "John Lennon",
+    "youtubeId": "PLa6371edAa",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 86,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "hey-jude-the-beatles",
+    "title": "Hey Jude",
+    "artist": "The Beatles",
+    "youtubeId": "PL4A9db41e2",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 87,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "yesterday-the-beatles",
+    "title": "Yesterday",
+    "artist": "The Beatles",
+    "youtubeId": "PL2e31138be",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 88,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "blackbird-the-beatles",
+    "title": "Blackbird",
+    "artist": "The Beatles",
+    "youtubeId": "PL9eaab972e",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 89,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "best-part-daniel-caesar",
+    "title": "Best Part",
+    "artist": "Daniel Caesar",
+    "youtubeId": "PL15cba1Afa",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 90,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "stay-with-me-sam-smith",
+    "title": "Stay With Me",
+    "artist": "Sam Smith",
+    "youtubeId": "PL15473c5ba",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 91,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "love-yourself-justin-bieber",
+    "title": "Love Yourself",
+    "artist": "Justin Bieber",
+    "youtubeId": "PL55A4179ca",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 92,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "just-the-way-you-are-bruno-mars",
+    "title": "Just the Way You Are",
+    "artist": "Bruno Mars",
+    "youtubeId": "PLaba8bd2df",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 93,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "grenade-bruno-mars",
+    "title": "Grenade",
+    "artist": "Bruno Mars",
+    "youtubeId": "PL6746847ca",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 94,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "shallow-lady-gaga",
+    "title": "Shallow",
+    "artist": "Lady Gaga",
+    "youtubeId": "PL8f5ccfbf9",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 95,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "say-you-won-t-let-go-james-arthur",
+    "title": "Say You Won't Let Go",
+    "artist": "James Arthur",
+    "youtubeId": "PLAcdaaA7e8",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 96,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "before-you-go-lewis-capaldi",
+    "title": "Before You Go",
+    "artist": "Lewis Capaldi",
+    "youtubeId": "PLd5A24b7e5",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 97,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "let-her-go-passenger",
+    "title": "Let Her Go",
+    "artist": "Passenger",
+    "youtubeId": "PL99f935eed",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 98,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "budapest-george-ezra",
+    "title": "Budapest",
+    "artist": "George Ezra",
+    "youtubeId": "PLcAea8d3cf",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 99,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "ho-hey-the-lumineers",
+    "title": "Ho Hey",
+    "artist": "The Lumineers",
+    "youtubeId": "PLa312b2a23",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 100,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "little-talks-of-monsters-and-men",
+    "title": "Little Talks",
+    "artist": "Of Monsters and Men",
+    "youtubeId": "PL474ccd61f",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 101,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "sweater-weather-the-neighbourhood",
+    "title": "Sweater Weather",
+    "artist": "The Neighbourhood",
+    "youtubeId": "PLA96739959",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 102,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "pompeii-bastille",
+    "title": "Pompeii",
+    "artist": "Bastille",
+    "youtubeId": "PL68658d3b2",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 103,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "radioactive-imagine-dragons",
+    "title": "Radioactive",
+    "artist": "Imagine Dragons",
+    "youtubeId": "PLb93543d6f",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 104,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "believer-imagine-dragons",
+    "title": "Believer",
+    "artist": "Imagine Dragons",
+    "youtubeId": "PL4ddAAb156",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 105,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "thunder-imagine-dragons",
+    "title": "Thunder",
+    "artist": "Imagine Dragons",
+    "youtubeId": "PLAc1cb9151",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 106,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "apologize-onerepublic",
+    "title": "Apologize",
+    "artist": "OneRepublic",
+    "youtubeId": "PLc4ee1cb1A",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 107,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "secrets-onerepublic",
+    "title": "Secrets",
+    "artist": "OneRepublic",
+    "youtubeId": "PLb2c1d115A",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 108,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "if-i-ain-t-got-you-alicia-keys",
+    "title": "If I Ain't Got You",
+    "artist": "Alicia Keys",
+    "youtubeId": "PLff7b816bb",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 109,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "rolling-in-the-deep-adele",
+    "title": "Rolling in the Deep",
+    "artist": "Adele",
+    "youtubeId": "PL3ecc8d993",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 110,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "set-fire-to-the-rain-adele",
+    "title": "Set Fire to the Rain",
+    "artist": "Adele",
+    "youtubeId": "PL3e46Ae958",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 111,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "when-we-were-young-adele",
+    "title": "When We Were Young",
+    "artist": "Adele",
+    "youtubeId": "PLAa95ac479",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 112,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "skyfall-adele",
+    "title": "Skyfall",
+    "artist": "Adele",
+    "youtubeId": "PL71b9baa25",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 113,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "watermelon-sugar-harry-styles",
+    "title": "Watermelon Sugar",
+    "artist": "Harry Styles",
+    "youtubeId": "PL31e38f856",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 114,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "as-it-was-harry-styles",
+    "title": "As It Was",
+    "artist": "Harry Styles",
+    "youtubeId": "PLA662f8b73",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 115,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "sign-of-the-times-harry-styles",
+    "title": "Sign of the Times",
+    "artist": "Harry Styles",
+    "youtubeId": "PL545c2837f",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 116,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "golden-harry-styles",
+    "title": "Golden",
+    "artist": "Harry Styles",
+    "youtubeId": "PL1c1caf677",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 117,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "adore-you-harry-styles",
+    "title": "Adore You",
+    "artist": "Harry Styles",
+    "youtubeId": "PL1f9376a6a",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 118,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "drivers-license-olivia-rodrigo",
+    "title": "Drivers License",
+    "artist": "Olivia Rodrigo",
+    "youtubeId": "PLf975ee23d",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 119,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "good-4-u-olivia-rodrigo",
+    "title": "Good 4 U",
+    "artist": "Olivia Rodrigo",
+    "youtubeId": "PLAd936ab64",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 120,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "deja-vu-olivia-rodrigo",
+    "title": "Deja Vu",
+    "artist": "Olivia Rodrigo",
+    "youtubeId": "PLa49899e27",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 121,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "peaches-justin-bieber",
+    "title": "Peaches",
+    "artist": "Justin Bieber",
+    "youtubeId": "PLdba7fe513",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 122,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "stay-the-kid-laroi",
+    "title": "Stay",
+    "artist": "The Kid LAROI",
+    "youtubeId": "PLb692426a3",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 123,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "levitating-dua-lipa",
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "youtubeId": "PL88a3153d8",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 124,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "blinding-lights-the-weeknd",
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "youtubeId": "PLb9d4A2a75",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 125,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "save-your-tears-the-weeknd",
+    "title": "Save Your Tears",
+    "artist": "The Weeknd",
+    "youtubeId": "PL8d85b854e",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 126,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "circles-post-malone",
+    "title": "Circles",
+    "artist": "Post Malone",
+    "youtubeId": "PLd6579464d",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 127,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "sunflower-post-malone",
+    "title": "Sunflower",
+    "artist": "Post Malone",
+    "youtubeId": "PLA71343ddA",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 128,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "memories-maroon-5",
+    "title": "Memories",
+    "artist": "Maroon 5",
+    "youtubeId": "PLc421fa4e7",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 129,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "girls-like-you-maroon-5",
+    "title": "Girls Like You",
+    "artist": "Maroon 5",
+    "youtubeId": "PL727be1ae6",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 130,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "sugar-maroon-5",
+    "title": "Sugar",
+    "artist": "Maroon 5",
+    "youtubeId": "PL12f38af9a",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 131,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "she-will-be-loved-maroon-5",
+    "title": "She Will Be Loved",
+    "artist": "Maroon 5",
+    "youtubeId": "PL9b123583c",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 132,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "payphone-maroon-5",
+    "title": "Payphone",
+    "artist": "Maroon 5",
+    "youtubeId": "PL7dc2673de",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 133,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "moves-like-jagger-counting-crows",
+    "title": "Moves Like Jagger",
+    "artist": "Counting Crows",
+    "youtubeId": "PLdeafab519",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 134,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "counting-blue-cars-goo-goo-dolls",
+    "title": "Counting Blue Cars",
+    "artist": "Goo Goo Dolls",
+    "youtubeId": "PLbf9c837Ac",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 135,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "iris-calvin-harris",
+    "title": "Iris",
+    "artist": "Calvin Harris",
+    "youtubeId": "PLcca38de6d",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 136,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "slide-pearl-jam",
+    "title": "Slide",
+    "artist": "Pearl Jam",
+    "youtubeId": "PLf1A9cb28A",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 137,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "yellow-ledbetter-radiohead",
+    "title": "Yellow Ledbetter",
+    "artist": "Radiohead",
+    "youtubeId": "PL36AA42d26",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 138,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "creep-radiohead",
+    "title": "Creep",
+    "artist": "Radiohead",
+    "youtubeId": "PLcAA8754c4",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 139,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "high-and-dry-radiohead",
+    "title": "High and Dry",
+    "artist": "Radiohead",
+    "youtubeId": "PL467beb1eb",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 60,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "fake-plastic-trees-radiohead",
+    "title": "Fake Plastic Trees",
+    "artist": "Radiohead",
+    "youtubeId": "PLedb929d8e",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 61,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "fix-you-alt-coldplay",
+    "title": "Fix You (Alt)",
+    "artist": "Coldplay",
+    "youtubeId": "PLb1d975c17",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 62,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "clocks-coldplay",
+    "title": "Clocks",
+    "artist": "Coldplay",
+    "youtubeId": "PL6e9283fca",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 63,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "paradise-coldplay",
+    "title": "Paradise",
+    "artist": "Coldplay",
+    "youtubeId": "PL88AA84194",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 64,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "adventure-of-a-lifetime-coldplay",
+    "title": "Adventure of a Lifetime",
+    "artist": "Coldplay",
+    "youtubeId": "PL571eA7d87",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 65,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "hymn-for-the-weekend-coldplay",
+    "title": "Hymn for the Weekend",
+    "artist": "Coldplay",
+    "youtubeId": "PLf59cb66ca",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 66,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "everglow-coldplay",
+    "title": "Everglow",
+    "artist": "Coldplay",
+    "youtubeId": "PL85a91Ad16",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 67,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "magic-coldplay",
+    "title": "Magic",
+    "artist": "Coldplay",
+    "youtubeId": "PLA6d9755c7",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 68,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "a-sky-full-of-stars-coldplay",
+    "title": "A Sky Full of Stars",
+    "artist": "Coldplay",
+    "youtubeId": "PLd58b5A157",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 69,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "ocean-eyes-billie-eilish",
+    "title": "Ocean Eyes",
+    "artist": "Billie Eilish",
+    "youtubeId": "PLA58ea3951",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 70,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "lovely-billie-eilish",
+    "title": "Lovely",
+    "artist": "Billie Eilish",
+    "youtubeId": "PL69588AdcA",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 71,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "happier-than-ever-billie-eilish",
+    "title": "Happier Than Ever",
+    "artist": "Billie Eilish",
+    "youtubeId": "PLbc9c8e2ca",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 72,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "bad-guy-billie-eilish",
+    "title": "Bad Guy",
+    "artist": "Billie Eilish",
+    "youtubeId": "PLAc396844d",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 73,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "everything-i-wanted-billie-eilish",
+    "title": "Everything I Wanted",
+    "artist": "Billie Eilish",
+    "youtubeId": "PLAb8A7fdf7",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 74,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "lovely-day-bill-withers",
+    "title": "Lovely Day",
+    "artist": "Bill Withers",
+    "youtubeId": "PL9b351bAc7",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "G",
+      "Em",
+      "C",
+      "D"
+    ],
+    "bpm": 75,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "G"
+      },
+      {
+        "t": 4.0,
+        "chord": "Em"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
+  },
+  {
+    "id": "lean-on-me-bill-withers",
+    "title": "Lean on Me",
+    "artist": "Bill Withers",
+    "youtubeId": "PL43c7a37A7",
+    "difficulty": "beginner",
+    "chordsUsed": [
+      "C",
+      "G",
+      "Am",
+      "F"
+    ],
+    "bpm": 76,
+    "decade": "10s",
+    "tags": [
+      "pop",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "C"
+      },
+      {
+        "t": 4.0,
+        "chord": "G"
+      },
+      {
+        "t": 8.0,
+        "chord": "Am"
+      },
+      {
+        "t": 12.0,
+        "chord": "F"
+      }
+    ]
+  },
+  {
+    "id": "ain-t-no-sunshine-bill-withers",
+    "title": "Ain't No Sunshine",
+    "artist": "Bill Withers",
+    "youtubeId": "PLf4c7157b4",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "bpm": 77,
+    "decade": "10s",
+    "tags": [
+      "indie",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "Am"
+      },
+      {
+        "t": 4.0,
+        "chord": "F"
+      },
+      {
+        "t": 8.0,
+        "chord": "C"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "superstition-stevie-wonder",
+    "title": "Superstition",
+    "artist": "Stevie Wonder",
+    "youtubeId": "PL91756aaee",
+    "difficulty": "intermediate",
+    "chordsUsed": [
+      "D",
+      "A",
+      "Bm",
+      "G"
+    ],
+    "bpm": 78,
+    "decade": "10s",
+    "tags": [
+      "classic",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "D"
+      },
+      {
+        "t": 4.0,
+        "chord": "A"
+      },
+      {
+        "t": 8.0,
+        "chord": "Bm"
+      },
+      {
+        "t": 12.0,
+        "chord": "G"
+      }
+    ]
+  },
+  {
+    "id": "isn-t-she-lovely-stevie-wonder",
+    "title": "Isn't She Lovely",
+    "artist": "Stevie Wonder",
+    "youtubeId": "PL1251f18e8",
+    "difficulty": "advanced",
+    "chordsUsed": [
+      "A",
+      "E",
+      "F#m",
+      "D"
+    ],
+    "bpm": 79,
+    "decade": "10s",
+    "tags": [
+      "indo",
+      "placeholder-yt"
+    ],
+    "timeline": [
+      {
+        "t": 0.0,
+        "chord": "A"
+      },
+      {
+        "t": 4.0,
+        "chord": "E"
+      },
+      {
+        "t": 8.0,
+        "chord": "F#m"
+      },
+      {
+        "t": 12.0,
+        "chord": "D"
+      }
+    ]
   }
 ]
