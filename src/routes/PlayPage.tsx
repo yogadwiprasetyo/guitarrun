@@ -2,8 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ChordDiagram from '../components/ChordDiagram'
 import ChordStrip from '../components/ChordStrip'
+import { Fretboard } from '../components/Fretboard'
 import { findSong } from '../lib/songs'
 import { findChord } from '../lib/chords'
+import {
+  computeFretWindow,
+  describeShapeForA11y,
+  toFretboardShape,
+  type FretboardShape,
+} from '../lib/fretboard'
 import { activeChordAt } from '../lib/timeline'
 import { useYouTubePlayer } from '../hooks/useYouTubePlayer'
 
@@ -12,6 +19,14 @@ function formatTime(s: number): string {
   const m = Math.floor(s / 60)
   const r = Math.floor(s % 60)
   return `${m}:${r.toString().padStart(2, '0')}`
+}
+
+function useOrientationOnce(): 'horizontal' | 'vertical' {
+  const [orientation] = useState<'horizontal' | 'vertical'>(() => {
+    if (typeof window === 'undefined') return 'horizontal'
+    return window.innerWidth <= 640 ? 'vertical' : 'horizontal'
+  })
+  return orientation
 }
 
 export default function PlayPage() {
@@ -44,6 +59,23 @@ export default function PlayPage() {
   const activeShape = activeHit ? findChord(activeHit.chord) : undefined
   const nextHit = active?.nextHit ?? null
   const nextShape = nextHit ? findChord(nextHit.chord) : undefined
+
+  const orientation = useOrientationOnce()
+  const { fretWindow, shapesByName } = useMemo(() => {
+    if (!song) return { fretWindow: { minFret: 0, maxFret: 5 }, shapesByName: new Map<string, FretboardShape>() }
+    const map = new Map<string, FretboardShape>()
+    for (const name of song.chordsUsed) {
+      const c = findChord(name)
+      if (c?.positions[0]) map.set(name, toFretboardShape(c.positions[0]))
+    }
+    return { fretWindow: computeFretWindow([...map.values()]), shapesByName: map }
+  }, [song])
+
+  const currentFretShape = activeHit ? shapesByName.get(activeHit.chord) ?? null : null
+  const nextFretShape = nextHit ? shapesByName.get(nextHit.chord) ?? null : null
+  const fretAriaLabel = currentFretShape && activeHit
+    ? describeShapeForA11y(currentFretShape, activeHit.chord)
+    : 'Fretboard idle — press play'
 
   if (!song) {
     return (
@@ -84,6 +116,25 @@ export default function PlayPage() {
         </h1>
         <p className="font-serif italic text-[20px] text-ink-60 mt-1">{song.artist}</p>
       </header>
+
+      <section
+        className="mt-8 bg-surface border border-ink-20"
+        style={{
+          height: orientation === 'horizontal' ? 220 : 420,
+          padding: 16,
+          color: 'var(--color-ink, #1a1a1a)',
+        }}
+      >
+        <Fretboard
+          current={currentFretShape}
+          next={nextFretShape}
+          currentTime={currentTime}
+          nextStartsAt={nextHit?.t ?? null}
+          window={fretWindow}
+          orientation={orientation}
+          ariaLabel={fretAriaLabel}
+        />
+      </section>
 
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,3fr)] gap-8 lg:gap-12">
         <div>
